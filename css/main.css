@@ -294,7 +294,7 @@ td {
   border-bottom-width: 1px;
 }
 .btn {
-  background: #fff;
+  background: rgba(255,255,255,0.4);
   border: 2px solid #555;
   border-radius: 16px;
   color: #555;
@@ -1166,7 +1166,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #26ec96;
+  background: #6a6691;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2287,7 +2287,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .header-inner {
-  background: #fff;
+  background: rgba(255,255,255,0.4);
   border-radius: 16px;
   box-shadow: initial;
   overflow: hidden;
@@ -2322,7 +2322,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .content-wrap {
-  background: #fff;
+  background: rgba(255,255,255,0.3);
   border-radius: 16px;
   box-shadow: initial;
   box-sizing: border-box;
@@ -2338,7 +2338,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .sidebar {
-  background: #f5f7f9;
+  background: rgba(255,255,255,0.3);
   box-shadow: none;
   float: left;
   position: static;
@@ -2505,7 +2505,7 @@ ul.breadcrumb li + li:last-child {
   color: #222;
 }
 .sidebar-inner {
-  background: #fff;
+  background: rgba(255,255,255,0.4);
   border-radius: 16px;
   box-shadow: initial;
   box-sizing: border-box;
