@@ -35,9 +35,9 @@
 
 <p>这里直接把 name 作为参数，直接引用，没有进行任何的过滤</p>
 <p>直接就可以简单的注入&lt;script&gt;脚本</p>
-<img src="./img/image-20191117102338139.png">
+<img src="../img/image-20191117102338139.png">
 
-<img src="./img/image-20191117102507967.png">
+<img src="../img/image-20191117102507967.png">
 
 <p>这里可以直接在 input 框注入脚本</p>
 <h5 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -45,9 +45,9 @@
 <p>这里会过滤掉&lt;script&gt;，但是它不区分大小写，而且是过滤掉整个标签的内容</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Script</span>&gt;</span><span class="actionscript">alert(<span class="string">"大写就可了"</span>)</span><span class="tag">&lt;/<span class="name">Script</span>&gt;</span></span><br><span class="line">&lt;scr&lt;script&gt;ipt&gt;alert("双写绕过")&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117103159011.png"/>
+<img src="../img/image-20191117103159011.png"/>
 
-<img src="./img/image-20191117103334509.png"/>
+<img src="../img/image-20191117103334509.png"/>
 
 <h5 id="High"><a href="#High" class="headerlink" title="High"></a>High</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -55,11 +55,11 @@
 <p>但是可以用其他的参数来触发，比如&lt;img src=”errorURL”&gt;，插入图片地址，或者&lt;a&gt;也可</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"errorURL"</span> <span class="attr">onerror</span>=<span class="string">alert(</span>"触发错误以绕过")&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span> = <span class="string">alert(</span>"直接触发")&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117104411270.png"/>
+<img src="../img/image-20191117104411270.png"/>
 
-<img src="./img/image-20191117104612118.png">
+<img src="../img/image-20191117104612118.png">
 
-<img src ="./img/image-20191117104804465.png">
+<img src ="../img/image-20191117104804465.png">
 
 <h5 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">`Hello $&#123;name&#125;<span class="string">";&#125;// Generate Anti-CSRF tokengenerateSessionToken();?&gt;`</span></span><br></pre></td></tr></table></figure>
 
@@ -70,7 +70,7 @@
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This is some &lt;b&gt;bold&lt;&#x2F;b&gt; text;</span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117105630252.png">
+<img src="../img/image-20191117105630252.png">
 
 <p>这里即使是想以标签的形式插入，但是插入的结果，确实以字符串形式填入，不会转义为标签</p>
 <h3 id="DOM-型-XSS"><a href="#DOM-型-XSS" class="headerlink" title="DOM 型 XSS"></a>DOM 型 XSS</h3><p>不经过后端,DOM—based XSS 漏洞是基于文档对象模型 Document Objeet Model,DOM)的一种漏洞,dom - xss 是通过 url 传入参数去控制触发的。</p>
@@ -89,21 +89,21 @@ DOM-XSS 的数据流向是：URL-->浏览器
 
 <h5 id="Low-1"><a href="#Low-1" class="headerlink" title="Low"></a>Low</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># No protections, anything goes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117113237470.png">
+<img src="../img/image-20191117113237470.png">
 
 <p>点击 Select 过后，默认的 default=English</p>
-<img src="./img/image-20191117113404758.png">
+<img src="../img/image-20191117113404758.png">
 
 <p>当修改 default 的值，就会本地的修改页面的渲染了</p>
-<img src="./img/image-20191117115234132.png">
+<img src="../img/image-20191117115234132.png">
 
-<img src="./img/image-20191117115557967.png">
+<img src="../img/image-20191117115557967.png">
 
 <h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line">    $default = $_GET[<span class="string">'default'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Do not allow script tags</span></span><br><span class="line">    <span class="keyword">if</span> (stripos ($default, <span class="string">"&lt;script"</span>) !== <span class="keyword">false</span>) &#123;<span class="comment">//这里限制了script</span></span><br><span class="line">        header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;&lt;svg%20onload%20&#x3D;%20alert(&quot;直接触发&quot;)&gt;&lt;&#x2F;svg&gt;</span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117140904220.png">
+<img src="../img/image-20191117140904220.png">
 
 <h5 id="High-1"><a href="#High-1" class="headerlink" title="High"></a>High</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># White list the allowable languages</span></span><br><span class="line">    <span class="keyword">switch</span> ($_GET[<span class="string">'default'</span>]) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"French"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"English"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"German"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"Spanish"</span>:</span><br><span class="line">            <span class="comment"># ok</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">            <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -125,15 +125,15 @@ DOM-XSS 的数据流向是：URL-->浏览器
 <p>最严重的一类，如留言板，如果有漏洞，恶意代码会存入数据库，别的用户来看留言板，会向后台发一个请求，拿到别人的留言内容，前端就会读取到这个恶意代码</p>
 <h4 id="攻击演示"><a href="#攻击演示" class="headerlink" title="攻击演示"></a>攻击演示</h4><h5 id="Low-2"><a href="#Low-2" class="headerlink" title="Low"></a>Low</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );<span class="comment">//移除一些字符，/n，/t 空格</span></span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message ); <span class="comment">//对字符串进行转义，比如删除了\，但是没有对输入的数据进行检查</span></span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="./img/image-20191117110540915.png">
+<img src="../img/image-20191117110540915.png">
 
 <p>成功注入并弹窗，这里的插入会使得永久保存，并且所有的客户端都可见，说明它已经存储在了服务器中，而且可以发现与反射型相比，它的 URL 并没有发生改变，数据的传输</p>
 <h5 id="Medium-2"><a href="#Medium-2" class="headerlink" title="Medium"></a>Medium</h5><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );<span class="comment">//！！这里对message进行了编码，但是发现并没有对name参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>但是可以发现，name 是有字数的限制，但是可以进入控制台修改</p>
-<img src="./img/image-20191117111902805.png">
+<img src="../img/image-20191117111902805.png">
 
-<img src="./img/image-20191117112400329.png">
+<img src="../img/image-20191117112400329.png">
 
 <p>在 name 的 input 框中插入成功</p>
 <h5 id="High-2"><a href="#High-2" class="headerlink" title="High"></a>High</h5><p>正则表达式的过滤，其实效果同反射型</p>
@@ -184,9 +184,9 @@ DOM-XSS 的数据流向是：URL-->浏览器
 <li>a.com 以受害者的名义执行了 act=xx</li>
 <li>攻击完成。攻击者在受害者不知情的情况下，冒充了受害者，让 a.com 执行了自己定义的操作</li>
 </ul>
-<img src="./img/sequence_diagram.svg">
+<img src="../img/sequence_diagram.svg">
 
-<h3 id="攻击测试"><a href="#攻击测试" class="headerlink" title="攻击测试"></a>攻击测试</h3><h4 id="Low-3"><a href="#Low-3" class="headerlink" title="Low"></a>Low</h4><img src="./img/image-20191117153204469.png">
+<h3 id="攻击测试"><a href="#攻击测试" class="headerlink" title="攻击测试"></a>攻击测试</h3><h4 id="Low-3"><a href="#Low-3" class="headerlink" title="Low"></a>Low</h4><img src="../img/image-20191117153204469.png">
 
 <p>在 URL 上面就已经显示了</p>
 <p>在 XSS store 类型中就可以进行更改</p>
