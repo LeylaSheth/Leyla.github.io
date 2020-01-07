@@ -155,8 +155,6 @@
 <p>浏览器下一次请求这个资源，浏览器检测到有 Last-Modified 这个 Header，于是添加 If-Modified-Since 这个 header，值就是 Last-Modified 中的值；服务器再次收到这个资源请求，会根据 If-Modified-Since 中的值和服务器中这个资源的最后修改时间对比，如果没有变化，返回 304 和空的响应体，直接从缓存读取，如果 If-Modified-Since 的时间小于服务器中这个资源的最后修改时间，说明文件有更新，于是返回新的资源文件和 200</p>
    <hr>
 Last-Modified存在一些弊端：
-
-
 </li>
 </ol>
 <ul>
