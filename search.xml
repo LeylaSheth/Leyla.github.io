@@ -2597,8 +2597,8 @@ DOM-XSS 的数据流向是：URL-->浏览器
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>安全</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
