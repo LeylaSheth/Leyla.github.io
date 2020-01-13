@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>学习Webpack</title>
+    <url>/2020/01/13/%E5%AD%A6%E4%B9%A0Webpack/</url>
+    <content><![CDATA[<h1 id="学习-Webpack"><a href="#学习-Webpack" class="headerlink" title="学习 Webpack"></a>学习 Webpack</h1><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><blockquote>
+<p>将一个复杂的系统分解为多个模块以方便编码</p>
+</blockquote>
+<h4 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a><code>CommonJS</code></h4><p>核心思想：</p>
+<ol>
+<li>通过<code>require</code>方法来同步加载依赖的其他模块</li>
+<li>通过<code>module.exports</code>导出需要暴露的接口（Node.js 使用也是如此）</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">const</span> moduleA = <span class="built_in">require</span>(<span class="string">'./moduleA'</span>);</span><br><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="built_in">module</span>.exports = moduleA.someFunc;</span><br></pre></td></tr></table></figure>
+
+<p>优点</p>
+<ul>
+<li>代码可复用于<code>Node.js</code>环境并运行，同构应用</li>
+<li>Npm 发布</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>无法直接在浏览器环境运行，必须使用工具转化为 ES5</li>
+</ul>
+<h4 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a><code>AMD</code></h4><p>采用异步的方式去加载依赖的模块。<code>AMD</code>主要用于解决针对浏览器环境的模块化问题</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义一个模块</span></span><br><span class="line">define(<span class="string">'module'</span>, [<span class="string">'dep'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">dep</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//导入和使用</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'module'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">module</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>优点</p>
+<ul>
+<li>直接在浏览器运行</li>
+<li>可以异步加载依赖</li>
+<li>并行加载多个依赖</li>
+<li>可以在浏览器和<code>Node.js</code>环境下运行</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li><code>JavaScript</code>环境没有原生支持</li>
+</ul>
+<h4 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a><code>ES6模块化</code></h4><p>浏览器和服务器通用的模块解决方案</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="样式文件中的模块化"><a href="#样式文件中的模块化" class="headerlink" title="样式文件中的模块化"></a>样式文件中的模块化</h4><p>将一些常用的样式片段放在通用文件中，再在另一个文件里通过<code>@import</code>语句导入和使用</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//util.scss文件</span></span><br><span class="line"><span class="comment">//定义样式片段</span></span><br><span class="line"><span class="keyword">@mixin</span> center &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: translate(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main.scss文件</span></span><br><span class="line"><span class="comment">//导入和使用样式片段</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">'util'</span>;</span><br><span class="line"><span class="selector-id">#box</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a><code>Webpack</code></h3><blockquote>
+<p>在<code>Webpack</code>里一切文件都是模块，通过<code>Loader</code>转换文件，通过<code>Plugin</code>注入钩子，最后输出由多个模块组合成的文件</p>
+</blockquote>
+<p>能配置处理文件的方式</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//所有模块的入口，Webpack从入口开始递归解析出所有依赖的模块</span></span><br><span class="line">  entry: <span class="string">'./app.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="comment">//将入口所依赖的所有模块打包成一个文件bundle.js输出</span></span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Webpack"><a href="#安装Webpack" class="headerlink" title="安装Webpack"></a>安装<code>Webpack</code></h4><p>使用 Webpack 执行构建任务，需要通过<code>webpack</code>可执行文件去启动构建任务</p>
+<ul>
+<li><p>新建 Web 项目</p>
+<ul>
+<li><code>npm init</code>初始化模块化开发的项目</li>
+<li>使用脚手架工具<a href="http://yeoman.io" target="_blank" rel="noopener">Yeoman</a></li>
+</ul>
+</li>
+<li><p>安装<code>Webpack</code>到项目</p>
+<ul>
+<li><code>npm i -D webpack</code> // <code>npm i -g webpack</code>全局安装</li>
+</ul>
+</li>
+<li><p>运行</p>
+<ul>
+<li><p>在根目录下的<code>node_modules/.bin/webpack</code>运行可执行文件</p>
+</li>
+<li><p>在<code>Npm Script</code>里定义</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"scripts":&#123;"start":"webpack --config webpack.config.js"&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>工程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>汇编语言程序设计</title>
     <url>/2020/01/08/assembly/</url>
     <content><![CDATA[<h1 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h1><p>计算机的硬件组成结构</p>
