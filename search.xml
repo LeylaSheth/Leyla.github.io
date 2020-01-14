@@ -6,13 +6,13 @@
     <content><![CDATA[<h1 id="学习-Webpack"><a href="#学习-Webpack" class="headerlink" title="学习 Webpack"></a>学习 Webpack</h1><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><blockquote>
 <p>将一个复杂的系统分解为多个模块以方便编码</p>
 </blockquote>
-<a id="more"></a>
-
 <h4 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a><code>CommonJS</code></h4><p>核心思想：</p>
 <ol>
 <li>通过<code>require</code>方法来同步加载依赖的其他模块</li>
 <li>通过<code>module.exports</code>导出需要暴露的接口（Node.js 使用也是如此）</li>
 </ol>
+<a id="more"></a>
+
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">const</span> moduleA = <span class="built_in">require</span>(<span class="string">'./moduleA'</span>);</span><br><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="built_in">module</span>.exports = moduleA.someFunc;</span><br></pre></td></tr></table></figure>
 
 <p>优点</p>
@@ -2734,8 +2734,8 @@ DOM-XSS 的数据流向是：URL-->浏览器
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>安全</tag>
         <tag>前端</tag>
+        <tag>安全</tag>
       </tags>
   </entry>
   <entry>
@@ -2845,8 +2845,8 @@ DOM-XSS 的数据流向是：URL-->浏览器
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>css</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
 </search>
