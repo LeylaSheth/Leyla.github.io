@@ -86,12 +86,7 @@
 </li>
 <li><pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/bundle.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="comment"><figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>项目目录</span><br></pre></td></tr></table></figure></span>
-|--index.html
-|--main.js
-|--show.js
-|--webpack.config.js
-<span class="comment"><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="selector-tag">-</span> 执行 <span class="selector-tag">webpack</span> 命令后会多出一个 <span class="selector-tag">dist</span> 文件，里面都是可执行的 <span class="selector-tag">JavaScript</span> 文件</span><br><span class="line"></span><br><span class="line">### 使用`<span class="selector-tag">Loader</span>`</span><br><span class="line"></span><br><span class="line">```<span class="selector-tag">css</span></span><br><span class="line"><span class="comment">/*main.css*/</span></span><br><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+<span class="comment"><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  - 项目目录</span><br><span class="line"></span><br><span class="line">    |<span class="comment">--index.html</span></span><br><span class="line">    |<span class="comment">--main.js</span></span><br><span class="line">    |<span class="comment">--show.js</span></span><br><span class="line">    |<span class="comment">--webpack.config.js</span></span><br><span class="line"></span><br><span class="line">* 执行 webpack 命令后会多出一个 dist 文件，里面都是可执行的 JavaScript 文件</span><br><span class="line"></span><br><span class="line"><span class="comment">### 使用`Loader`</span></span><br><span class="line"></span><br><span class="line">```css</span><br><span class="line">/*main.css*/</span><br><span class="line"><span class="comment">#app &#123;</span></span><br><span class="line">  <span class="built_in">text</span>-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
 </code></pre>
 </li>
 </ul>
