@@ -54,7 +54,7 @@
 <td>从索引 5 删除 3 个元素，插入 2，3，4</td>
 </tr>
 </tbody></table>
-<p>![img](file:///C:\Users\Lenovo\Documents\Tencent Files\941565516\Image\C2C\1F65C2445C92CAEAE580A87D8A9F6A7F.png)</p>
+<p><img src="/2020/01/15/JavaScript1/1F65C2445C92CAEAE580A87D8A9F6A7F.png" alt="img"></p>
 <h3 id="ES6-和数组新功能"><a href="#ES6-和数组新功能" class="headerlink" title="ES6 和数组新功能"></a>ES6 和数组新功能</h3><ol>
 <li><p><code>for...of</code>循环迭代</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> n <span class="keyword">of</span> number) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(n % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'even'</span> : <span class="string">'odd'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2657,8 +2657,8 @@ Last-Modified存在一些弊端：
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>JavaScript</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -2966,8 +2966,8 @@ DOM-XSS 的数据流向是：URL-->浏览器
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>css</tag>
         <tag>前端</tag>
+        <tag>css</tag>
       </tags>
   </entry>
 </search>
