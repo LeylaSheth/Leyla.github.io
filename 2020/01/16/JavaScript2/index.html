@@ -48,29 +48,33 @@
   };
 </script>
 
-  <meta name="description" content="Some Blogs">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Leyla Sheth">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="JavaScript 数据结构与算法（二）栈与队列篇栈 Stack 栈是一种特殊的列表，栈内的元素只能通过列表的一端访问，是一种后入先出（LIFO）的数据结构  基于数组实现栈12345678910111213141516171819202122232425262728293031323334353637383940class Stack &amp;#123;  constructor() &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据结构与算法（二）栈与队列篇">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/JavaScript2/index.html">
 <meta property="og:site_name" content="Leyla Sheth">
-<meta property="og:description" content="Some Blogs">
+<meta property="og:description" content="JavaScript 数据结构与算法（二）栈与队列篇栈 Stack 栈是一种特殊的列表，栈内的元素只能通过列表的一端访问，是一种后入先出（LIFO）的数据结构  基于数组实现栈12345678910111213141516171819202122232425262728293031323334353637383940class Stack &amp;#123;  constructor() &amp;#123;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-16T15:00:50.000Z">
+<meta property="article:modified_time" content="2020-01-16T15:01:20.684Z">
 <meta property="article:author" content="Lee Yue">
+<meta property="article:tag" content="数据结构与算法">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/01/16/JavaScript2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Leyla Sheth</title>
+  <title>JavaScript数据结构与算法（二）栈与队列篇 | Leyla Sheth</title>
   
 
 
@@ -209,10 +213,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/16/JavaScript2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -226,8 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/16/JavaScript2/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（二）栈与队列篇</a>
+          JavaScript数据结构与算法（二）栈与队列篇
         </h1>
 
         <div class="post-meta">
@@ -277,7 +280,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="JavaScript-数据结构与算法（二）栈与队列篇"><a href="#JavaScript-数据结构与算法（二）栈与队列篇" class="headerlink" title="JavaScript 数据结构与算法（二）栈与队列篇"></a>JavaScript 数据结构与算法（二）栈与队列篇</h1><h2 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈 Stack"></a>栈 Stack</h2><blockquote>
+        <h1 id="JavaScript-数据结构与算法（二）栈与队列篇"><a href="#JavaScript-数据结构与算法（二）栈与队列篇" class="headerlink" title="JavaScript 数据结构与算法（二）栈与队列篇"></a>JavaScript 数据结构与算法（二）栈与队列篇</h1><h2 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈 Stack"></a>栈 Stack</h2><blockquote>
 <p>栈是一种特殊的列表，栈内的元素只能通过列表的一端访问，是一种后入先出（LIFO）的数据结构</p>
 </blockquote>
 <h3 id="基于数组实现栈"><a href="#基于数组实现栈" class="headerlink" title="基于数组实现栈"></a>基于数组实现栈</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.items = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//入栈操作</span></span><br><span class="line">  push(element = <span class="string">''</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!element) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">this</span>.items.push(element);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//出栈操作</span></span><br><span class="line">  pop() &#123;</span><br><span class="line">    <span class="keyword">this</span>.items.pop();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//查看栈顶元素，理论上只能看到栈顶或者即将处理的元素</span></span><br><span class="line">  peek() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items[<span class="keyword">this</span>.size() - <span class="number">1</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//打印栈数据</span></span><br><span class="line">  print() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.join(<span class="string">' '</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//栈是否为空</span></span><br><span class="line">  isEmpty() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//返回栈的元素个数</span></span><br><span class="line">  size() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.length;</span><br><span class="line">  &#125;</span><br><span class="line">  clear() &#123;</span><br><span class="line">    <span class="keyword">this</span>.items = [];</span><br><span class="line">    <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -305,616 +308,37 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deque</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.lowestCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.items = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//向双端队列的前端添加元素</span></span><br><span class="line">  addFront(element)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.isEmpty())&#123;</span><br><span class="line">      <span class="keyword">this</span>.addBack(element);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.lowest)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/15/JavaScript1/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/15/JavaScript1/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（一）数组、列表篇</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-15 16:45:50" itemprop="dateCreated datePublished" datetime="2020-01-15T16:45:50+08:00">2020-01-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 19:52:33" itemprop="dateModified" datetime="2020-01-16T19:52:33+08:00">2020-01-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="JavaScript-数据结构与算法（一）数组、列表篇"><a href="#JavaScript-数据结构与算法（一）数组、列表篇" class="headerlink" title="JavaScript 数据结构与算法（一）数组、列表篇"></a>JavaScript 数据结构与算法（一）数组、列表篇</h1><blockquote>
-<p>数组的标准定义：一个存储元素的线性集合，元素可以通过索引来任意存取</p>
-</blockquote>
-<p>JavaScript 中的数组是一种特殊的对象，用来表示偏移量的索引是该对象的属性，数字索引在内部被转换为字符串类型。JavaScript 对象中的属性名必须是字符串，效率不比其他语言</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/15/JavaScript1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/15/JavaScript1/" rel="prev" title="JavaScript数据结构与算法（一）数组、列表篇">
+      <i class="fa fa-chevron-left"></i> JavaScript数据结构与算法（一）数组、列表篇
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/13/%E5%AD%A6%E4%B9%A0Webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/13/%E5%AD%A6%E4%B9%A0Webpack/" class="post-title-link" itemprop="url">学习Webpack</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-13 20:10:10" itemprop="dateCreated datePublished" datetime="2020-01-13T20:10:10+08:00">2020-01-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:34:59" itemprop="dateModified" datetime="2020-01-15T12:34:59+08:00">2020-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="学习-Webpack"><a href="#学习-Webpack" class="headerlink" title="学习 Webpack"></a>学习 Webpack</h1><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><blockquote>
-<p>将一个复杂的系统分解为多个模块以方便编码</p>
-</blockquote>
-<h4 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a><code>CommonJS</code></h4><p>核心思想：</p>
-<ol>
-<li>通过<code>require</code>方法来同步加载依赖的其他模块</li>
-<li>通过<code>module.exports</code>导出需要暴露的接口（Node.js 使用也是如此）</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/13/%E5%AD%A6%E4%B9%A0Webpack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/assembly/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/08/assembly/" class="post-title-link" itemprop="url">汇编语言程序设计</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-08 22:16:00 / 修改时间：22:21:31" itemprop="dateCreated datePublished" datetime="2020-01-08T22:16:00+08:00">2020-01-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Assembly/" itemprop="url" rel="index">
-                    <span itemprop="name">Assembly</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>33k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>30 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h1><p>计算机的硬件组成结构</p>
-<p>CPU：运算器，控制器，寄存器</p>
-<p>主存储器</p>
-<p>I/O接口</p>
-<p>汇编语言抽象成为：寄存器，存储器地址和输入输出地址</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/08/assembly/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/Task/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/07/Task/" class="post-title-link" itemprop="url">浏览器缓存的实现</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-07 14:25:00 / 修改时间：14:31:13" itemprop="dateCreated datePublished" datetime="2020-01-07T14:25:00+08:00">2020-01-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="浏览器缓存的实现"><a href="#浏览器缓存的实现" class="headerlink" title="浏览器缓存的实现"></a>浏览器缓存的实现</h1><p>网站的性能就是看网站打开的速度</p>
-<p>其中提高网页反应速度的一个方式就是使用缓存</p>
-<p>缩短网页请求资源的距离，减少延迟</p>
-<p>缓存文件可以重复利用，可以减少带宽，降低网络负荷</p>
-<p>缓存的目标，尽快返回请求数据，减少延迟</p>
-<h2 id="认识浏览器缓存"><a href="#认识浏览器缓存" class="headerlink" title="认识浏览器缓存"></a>认识浏览器缓存</h2><p>当浏览器请求一个网站，会加载很多资源，对于一些不经常变动的内容，会保存在本地文件中，下次访问就会快速加载</p>
-<blockquote>
-<p>被浏览器保存的文件就被称为缓存（不是 Cookie 或者 Localstorage）</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/07/Task/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/" class="post-title-link" itemprop="url">前端安全（XSS&CSRF）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-07 13:00:00 / 修改时间：14:00:30" itemprop="dateCreated datePublished" datetime="2020-01-07T13:00:00+08:00">2020-01-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前端安全-XSS-amp-CSRF"><a href="#前端安全-XSS-amp-CSRF" class="headerlink" title="前端安全(XSS&amp;CSRF)"></a>前端安全(XSS&amp;CSRF)</h1><h2 id="XSS-篇"><a href="#XSS-篇" class="headerlink" title="XSS 篇"></a>XSS 篇</h2><p>Cross-Site Scripting(跨站脚本攻击)，是一种代码注入攻击。</p>
-<p>攻击者通过在目标网站注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、SessionID 等，进而危害数据安全</p>
-<ol>
-<li>XSS 的本质是：恶意代码未经过滤，与网站正常的代码混在一起；浏览器无法分辨那些脚本是可信的，导致恶意脚本被执行</li>
-<li>由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求</li>
-<li>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行，来完成比较复杂的攻击策略</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/SCSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/06/SCSS/" class="post-title-link" itemprop="url">SCSS</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-06 20:10:10" itemprop="dateCreated datePublished" datetime="2020-01-06T20:10:10+08:00">2020-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-07 13:08:04" itemprop="dateModified" datetime="2020-01-07T13:08:04+08:00">2020-01-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义变量和值</span></span><br><span class="line"><span class="variable">$bgcolor</span>: lightblue;</span><br><span class="line"><span class="variable">$textcolor</span>: darkblue;</span><br><span class="line"><span class="variable">$fontsize</span>: <span class="number">18px</span>;</span><br><span class="line"><span class="comment">// 使用变量</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$bgcolor</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$textcolor</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$fontsize</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/06/SCSS/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -965,6 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-数据结构与算法（二）栈与队列篇"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 数据结构与算法（二）栈与队列篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-Stack"><span class="nav-number">1.1.</span> <span class="nav-text">栈 Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于数组实现栈"><span class="nav-number">1.1.1.</span> <span class="nav-text">基于数组实现栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于对象实现栈"><span class="nav-number">1.1.2.</span> <span class="nav-text">基于对象实现栈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一些规范化改进"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">一些规范化改进</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下划线命名约定"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">下划线命名约定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#限定作用域-Symbol-实现类"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">限定作用域 Symbol 实现类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进制数转化"><span class="nav-number">1.1.3.</span> <span class="nav-text">进制数转化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列-Queue-和双端队列-Deque"><span class="nav-number">1.2.</span> <span class="nav-text">队列 Queue 和双端队列 Deque</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#队列数据结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">队列数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双端队列数据结构"><span class="nav-number">1.2.2.</span> <span class="nav-text">双端队列数据结构</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
