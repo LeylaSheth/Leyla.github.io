@@ -213,116 +213,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/JavaScript4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/19/JavaScript4/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（四）集合篇</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-19 23:00:50 / 修改时间：21:22:27" itemprop="dateCreated datePublished" datetime="2020-01-19T23:00:50+08:00">2020-01-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="JavaScript-数据结构与算法（四）集合篇"><a href="#JavaScript-数据结构与算法（四）集合篇" class="headerlink" title="JavaScript 数据结构与算法（四）集合篇"></a>JavaScript 数据结构与算法（四）集合篇</h1><h2 id="构建数据集合"><a href="#构建数据集合" class="headerlink" title="构建数据集合"></a>构建数据集合</h2><blockquote>
-<p>集合是由一组无序且唯一（不能重复）的项组成。</p>
-</blockquote>
-<h2 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Set</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  has(element)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.hasOwnProperty.call(<span class="keyword">this</span>.items, element);</span><br><span class="line">  &#125;</span><br><span class="line">  add(element)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.has(element))&#123;</span><br><span class="line">      <span class="keyword">this</span>.items[element] = element;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">delete</span>(element)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.has(element))&#123;</span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.items[element];</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  clear()&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  size()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.items).length;</span><br><span class="line">  &#125;</span><br><span class="line">  sizeLegacy()&#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>.items)&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.items.hasOwnProperty(key))&#123;</span><br><span class="line">        count++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  values()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.values(<span class="keyword">this</span>.items);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h2><h3 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">union(otherSet)&#123;</span><br><span class="line">  <span class="keyword">const</span> unionSet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">this</span>.values().forEach(<span class="function"><span class="params">value</span> =&gt;</span> unionSet.add(value));</span><br><span class="line">  otherSet.values().forEach(<span class="function"><span class="params">value</span> =&gt;</span> unionSet.add(value));</span><br><span class="line">  <span class="keyword">return</span> unionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">intersection(otherset)&#123;</span><br><span class="line">  <span class="keyword">const</span> intersectionSet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">const</span> values = <span class="keyword">this</span>.values;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; values.length; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(otherSet.has(values[i]))&#123;</span><br><span class="line">      intersectionSet.add(values[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> intersectionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="差集"><a href="#差集" class="headerlink" title="差集"></a>差集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">difference(otherSet)&#123;</span><br><span class="line">  <span class="keyword">const</span> differenceSet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">this</span>.values().forEach(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(!otherSet.has(value))&#123;</span><br><span class="line">      differenceSet.add(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> differenceSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">isSubsetOf(otherSet)&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.size() &gt; otherSet.size())&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> isSubset = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">this</span>.values().every(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(!otherSet.has(value))&#123;</span><br><span class="line">      isSubset = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> isSubset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>多重集或袋</p>
-<p>允许向集合中插入之前已经添加过的元素。在计算集合中元素的出现次数时很有用。在数据库系统中得到了广泛运用。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/JavaScript5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,7 +227,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/01/19/JavaScript5/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（五）字典与散列表篇</a>
+            <a href="/2020/01/19/JavaScript5/" class="post-title-link" itemprop="url">JavaScript5</a>
         </h1>
 
         <div class="post-meta">
@@ -348,18 +238,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-19 23:00:50 / 修改时间：22:20:58" itemprop="dateCreated datePublished" datetime="2020-01-19T23:00:50+08:00">2020-01-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
+              <time title="创建时间：2020-01-19 22:20:58 / 修改时间：22:23:22" itemprop="dateCreated datePublished" datetime="2020-01-19T22:20:58+08:00">2020-01-19</time>
             </span>
 
           <br>
@@ -368,7 +247,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>124</span>
+              <span>222</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -387,15 +266,113 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="JavaScript-数据结构与算法（五）字典与散列表篇"><a href="#JavaScript-数据结构与算法（五）字典与散列表篇" class="headerlink" title="JavaScript 数据结构与算法（五）字典与散列表篇"></a>JavaScript 数据结构与算法（五）字典与散列表篇</h1><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><blockquote>
+          <hr>
+<p>title: JavaScript数据结构与算法（五）字典与散列表篇<br>date: 2020-01-19 23:00:50<br>tags:</p>
+<ul>
+<li>数据结构与算法</li>
+<li>JavaScript<br>categories: 数据结构与算法<br>—# JavaScript 数据结构与算法（五）字典与散列表篇</li>
+</ul>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><blockquote>
 <p>字典是以<code>[key,value]</code>（集合则是<code>[value,value]</code>）</p>
 <p>字典也称作<strong>映射、符号表、关联数组</strong></p>
 <p>字典经常用来保存对象的引用地址</p>
 </blockquote>
-<h3 id="创建字典类"><a href="#创建字典类" class="headerlink" title="创建字典类"></a>创建字典类</h3><blockquote>
-<p>在字典中，一般是用字符串作为键名，值可以是任何类型</p>
-</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/19/JavaScript5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/JavaScript4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/19/JavaScript4/" class="post-title-link" itemprop="url">JavaScript4</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-19 21:22:27 / 修改时间：22:23:22" itemprop="dateCreated datePublished" datetime="2020-01-19T21:22:27+08:00">2020-01-19</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: JavaScript数据结构与算法（四）集合篇<br>date: 2020-01-19 23:00:50<br>tags:</p>
+<ul>
+<li>数据结构与算法</li>
+<li>JavaScript<br>categories: 数据结构与算法<br>—# JavaScript 数据结构与算法（四）集合篇</li>
+</ul>
+<h2 id="构建数据集合"><a href="#构建数据集合" class="headerlink" title="构建数据集合"></a>构建数据集合</h2><blockquote>
+<p>集合是由一组无序且唯一（不能重复）的项组成。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/19/JavaScript4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -445,7 +422,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-19 19:41:37" itemprop="dateModified" datetime="2020-01-19T19:41:37+08:00">2020-01-19</time>
+                <time title="修改时间：2020-01-19 22:23:22" itemprop="dateModified" datetime="2020-01-19T22:23:22+08:00">2020-01-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -465,7 +442,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -488,23 +465,14 @@
 <p>数组的大小是固定的，从数组的起点或中间插入或移除项的成本很高</p>
 <p>链表存储有序的元素合集，链表中的元素在内存中不是连续放置的</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.element = element;</span><br><span class="line">  <span class="keyword">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LinkedList</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.head = <span class="literal">undefined</span>;</span><br><span class="line">  <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.push = push;</span><br><span class="line">  <span class="keyword">this</span>.removeAt = removeAt;</span><br><span class="line">  <span class="keyword">this</span>.getElementAt = getElementAt;</span><br><span class="line">  <span class="keyword">this</span>.insert = insert;</span><br><span class="line">  <span class="keyword">this</span>.indexOf = indexOf;</span><br><span class="line">  <span class="keyword">this</span>.size = size;</span><br><span class="line">  <span class="keyword">this</span>.isEmpty = isEmpty;</span><br><span class="line">  <span class="keyword">this</span>.toString = toString;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向链表尾部添加元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> node = <span class="keyword">new</span> Node(element);</span><br><span class="line">  <span class="keyword">let</span> current;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.head == <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.head = node;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    current = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="keyword">while</span>(current.next !== <span class="literal">null</span>)&#123;<span class="comment">//获得最后一项</span></span><br><span class="line">      current = current.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将其next赋为新元素，创建链接</span></span><br><span class="line">    current.next = node;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.count++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//从链表中移除元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeAt</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt; <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="comment">//移除第一项</span></span><br><span class="line">    <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">this</span>.head = current.next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> previous;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; index; i++)&#123;<span class="comment">//找到index节点</span></span><br><span class="line">        previous = current;</span><br><span class="line">        current = current.next;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//跳过current</span></span><br><span class="line">      previous.next = current.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.count--;</span><br><span class="line">    <span class="keyword">return</span> current.element;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//找到目标位置的元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementAt</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt;= <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">let</span> node = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; index &amp;&amp; node !== <span class="literal">null</span>; i++)&#123;</span><br><span class="line">      node = node.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重构remove</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt; <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">this</span>.head = current.next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> previous = <span class="keyword">this</span>.getElementAt(index<span class="number">-1</span>);</span><br><span class="line">      current = previous.next;</span><br><span class="line">      previous.next = current.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.count--;</span><br><span class="line">    <span class="keyword">return</span> current.element;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//任意位置插入</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">element,index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt;= <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">const</span> node = <span class="keyword">new</span> Node(element);</span><br><span class="line">    <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;<span class="comment">//在第一位插入</span></span><br><span class="line">      <span class="keyword">const</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">      node.next = current;</span><br><span class="line">      <span class="keyword">this</span>.head = node;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> previous = <span class="keyword">this</span>.getElementAt(index<span class="number">-1</span>);</span><br><span class="line">      <span class="comment">//插入操作</span></span><br><span class="line">      <span class="keyword">const</span> current = previous.next;</span><br><span class="line">      node.next = current;</span><br><span class="line">      previous.next = node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.count++;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回一个元素的位置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">indexOf</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.count &amp;&amp; current !== <span class="literal">null</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(current.element !== element)&#123;</span><br><span class="line">      current = current.nextl</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">size</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmpty</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.size() === <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getHead</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.head;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.head === <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> objString = <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.head.element&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="keyword">this</span>.head.next;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.count &amp;&amp; current !== <span class="literal">null</span>; i++)&#123;</span><br><span class="line">    objString = <span class="string">`<span class="subst">$&#123;objString&#125;</span>,<span class="subst">$&#123;current.element&#125;</span>`</span>;</span><br><span class="line">    current = current.next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> objString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><blockquote>
-<p>双向链接，方便找到前一个节点</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DoublyNode</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.element = element;</span><br><span class="line">  <span class="keyword">this</span>.next = <span class="literal">undefined</span>;</span><br><span class="line">  <span class="keyword">this</span>.prev = <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DoublyLinkedList</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.head = <span class="literal">undefined</span>;</span><br><span class="line">  <span class="keyword">this</span>.tail = <span class="literal">undefined</span>;</span><br><span class="line">  <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.insert = insert;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">element, index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt;= <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">const</span> node = <span class="keyword">new</span> DoublyNode(element);</span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.head === <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.head = node;</span><br><span class="line">        <span class="keyword">this</span>.tail = node;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        node.next = <span class="keyword">this</span>.head;</span><br><span class="line">        current.prev = node;</span><br><span class="line">        <span class="keyword">this</span>.head = node;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index === <span class="keyword">this</span>.count)&#123;</span><br><span class="line">      current = <span class="keyword">this</span>.tail;</span><br><span class="line">      current.next = node;</span><br><span class="line">      node.prev = current;</span><br><span class="line">      <span class="keyword">this</span>.tail = node;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> previous = <span class="keyword">this</span>.getElementAt(index - <span class="number">1</span>);</span><br><span class="line">      current = previous.next;</span><br><span class="line">      node.next = current;</span><br><span class="line">      previous.next = node;</span><br><span class="line">      current.prev = node;</span><br><span class="line">      node.prev = previous;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.count++;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeAt</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(index &gt;= <span class="number">0</span> &amp;&amp; index &lt; <span class="keyword">this</span>.count)&#123;</span><br><span class="line">    <span class="keyword">let</span> current = <span class="keyword">this</span>.head;</span><br><span class="line">    <span class="keyword">if</span>(index === <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">this</span>.head = current.next;</span><br><span class="line">      <span class="comment">//如果只有一项，更新tail</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.count === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.tail = <span class="literal">undefined</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index === <span class="keyword">this</span>.count - <span class="number">1</span>)&#123;</span><br><span class="line">      current = <span class="keyword">this</span>.tail;</span><br><span class="line">      <span class="keyword">this</span>.tail = current.prev;</span><br><span class="line">      <span class="keyword">this</span>.tail.next = <span class="literal">undefined</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      current = <span class="keyword">this</span>.getElementAt(index);</span><br><span class="line">      <span class="keyword">const</span> previous = current.prev;</span><br><span class="line">      previous.next = current.next;</span><br><span class="line">      current.next.prev = previous;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.count--;</span><br><span class="line">    <span class="keyword">return</span> current.element;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><blockquote>
-<p>循环链表链表一样单向引用</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail.next = head</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/17/JavaScript3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
