@@ -213,6 +213,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/20/JavaScript%E8%BF%9B%E9%98%B6%E7%B3%BB%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/20/JavaScript%E8%BF%9B%E9%98%B6%E7%B3%BB%E5%88%97/" class="post-title-link" itemprop="url">JavaScript进阶系列</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-20 23:09:03" itemprop="dateCreated datePublished" datetime="2020-01-20T23:09:03+08:00">2020-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-21 23:10:42" itemprop="dateModified" datetime="2020-01-21T23:10:42+08:00">2020-01-21</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>790</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="JavaScript-进阶系列"><a href="#JavaScript-进阶系列" class="headerlink" title="JavaScript 进阶系列"></a>JavaScript 进阶系列</h1><h2 id="解析过程与变量提升"><a href="#解析过程与变量提升" class="headerlink" title="解析过程与变量提升"></a>解析过程与变量提升</h2><h3 id="变量的提升"><a href="#变量的提升" class="headerlink" title="变量的提升"></a>变量的提升</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> web = <span class="string">'by.com'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(web);</span><br><span class="line"><span class="keyword">var</span> <span class="class"><span class="keyword">class</span> </span>= <span class="string">'asdf'</span>; <span class="comment">//关键字不可用</span></span><br></pre></td></tr></table></figure>
+
+<p>结果是不会输出<code>web</code>的内容，直接报错</p>
+<p>原因：解析器在运行代码前会解析一波，在这个过程中进行了<strong>变量提升</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(web); <span class="comment">//error，web没有定义</span></span><br><span class="line"><span class="keyword">var</span> web = <span class="string">'by.com'</span>; <span class="comment">//输出undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>执行前进行解析，变量提升</p>
+<p><code>var web = &quot;by.com&quot;</code>这个语句进行了 ① 声明和 ② 赋值，等同于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> web; <span class="comment">//这一步在解析中被提升到前面</span></span><br><span class="line">web = <span class="string">'by.com'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>变量提升是在代码预解析的时候进行的处理；</p>
+<h3 id="函数的例子"><a href="#函数的例子" class="headerlink" title="函数的例子"></a>函数的例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> web = <span class="string">'by.com'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(web);</span><br><span class="line">&#125;</span><br><span class="line">show();</span><br><span class="line"><span class="comment">//输出undefined，等同于在if前赋值</span></span><br></pre></td></tr></table></figure>
+
+<p>SUM：使用<code>var</code>定义赋值不是最佳的，习惯最好是先声明后使用的操作。</p>
+<h2 id="let-amp-const暂时性死区-TDC"><a href="#let-amp-const暂时性死区-TDC" class="headerlink" title="let&amp;const暂时性死区 TDC"></a><code>let</code>&amp;<code>const</code>暂时性死区 TDC</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a><code>let</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(web);</span><br><span class="line"><span class="keyword">let</span> web = <span class="string">'by.com'</span>; <span class="comment">//error报错,这里const同理</span></span><br></pre></td></tr></table></figure>
+
+<p><code>let</code>声明产生了一个临时性死区 TDC</p>
+<p><strong><code>let</code>声明，必须在声明之后才能使用。</strong></p>
+<hr>
+
+<h3 id="函数的例子-1"><a href="#函数的例子-1" class="headerlink" title="函数的例子"></a>函数的例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> web = <span class="string">'by.com'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(web);</span><br><span class="line">  <span class="comment">//let web = 'some';</span></span><br><span class="line">  <span class="comment">//如果在函数里，调用后加上声明，就会报错，cannot access 'web'...</span></span><br><span class="line">&#125;</span><br><span class="line">func();</span><br><span class="line"><span class="comment">//输出by.com</span></span><br></pre></td></tr></table></figure>
+
+<p>如果在函数体内没有声明变量，会向上寻找变量</p>
+<p>在块区域中如果使用了声明语句，声明语句必须放在使用之前，就不会出现<code>var</code>的问题</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/20/JavaScript6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -284,6 +386,99 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/20/JavaScript6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/JavaScript4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/19/JavaScript4/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（四）集合篇</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-19 23:00:50 / 修改时间：22:25:54" itemprop="dateCreated datePublished" datetime="2020-01-19T23:00:50+08:00">2020-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="JavaScript-数据结构与算法（四）集合篇"><a href="#JavaScript-数据结构与算法（四）集合篇" class="headerlink" title="JavaScript 数据结构与算法（四）集合篇"></a>JavaScript 数据结构与算法（四）集合篇</h1><h2 id="构建数据集合"><a href="#构建数据集合" class="headerlink" title="构建数据集合"></a>构建数据集合</h2><blockquote>
+<p>集合是由一组无序且唯一（不能重复）的项组成。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/19/JavaScript4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -385,99 +580,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/19/JavaScript5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/JavaScript4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/19/JavaScript4/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（四）集合篇</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-19 23:00:50 / 修改时间：22:25:54" itemprop="dateCreated datePublished" datetime="2020-01-19T23:00:50+08:00">2020-01-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="JavaScript-数据结构与算法（四）集合篇"><a href="#JavaScript-数据结构与算法（四）集合篇" class="headerlink" title="JavaScript 数据结构与算法（四）集合篇"></a>JavaScript 数据结构与算法（四）集合篇</h1><h2 id="构建数据集合"><a href="#构建数据集合" class="headerlink" title="构建数据集合"></a>构建数据集合</h2><blockquote>
-<p>集合是由一组无序且唯一（不能重复）的项组成。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/19/JavaScript4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1094,103 +1196,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/" class="post-title-link" itemprop="url">前端安全（XSS&CSRF）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-07 13:00:00 / 修改时间：14:00:30" itemprop="dateCreated datePublished" datetime="2020-01-07T13:00:00+08:00">2020-01-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前端安全-XSS-amp-CSRF"><a href="#前端安全-XSS-amp-CSRF" class="headerlink" title="前端安全(XSS&amp;CSRF)"></a>前端安全(XSS&amp;CSRF)</h1><h2 id="XSS-篇"><a href="#XSS-篇" class="headerlink" title="XSS 篇"></a>XSS 篇</h2><p>Cross-Site Scripting(跨站脚本攻击)，是一种代码注入攻击。</p>
-<p>攻击者通过在目标网站注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、SessionID 等，进而危害数据安全</p>
-<ol>
-<li>XSS 的本质是：恶意代码未经过滤，与网站正常的代码混在一起；浏览器无法分辨那些脚本是可信的，导致恶意脚本被执行</li>
-<li>由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求</li>
-<li>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行，来完成比较复杂的攻击策略</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/07/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8(XSS&CSRF)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1263,7 +1268,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1328,7 +1333,7 @@
   <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-  <span title="站点阅读时长">1:16</span>
+  <span title="站点阅读时长">1:17</span>
 </div>
 <!-- <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div> -->
