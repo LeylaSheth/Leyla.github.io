@@ -1,8 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JavaScript进阶系列</title>
-    <url>/2020/01/20/JavaScript%E8%BF%9B%E9%98%B6%E7%B3%BB%E5%88%97/</url>
+    <title>React-Hook</title>
+    <url>/2020/01/22/React-Hook/</url>
+    <content><![CDATA[<h1 id="React-Hook"><a href="#React-Hook" class="headerlink" title="React-Hook"></a>React-Hook</h1><blockquote>
+<p>Hook 是 React 16.8 的新特性，可以在不编写<code>class</code>的情况下使用<code>state</code>以及其他的 React 特性</p>
+</blockquote>
+<h2 id="State-Hook"><a href="#State-Hook" class="headerlink" title="State Hook"></a><code>State Hook</code></h2><p>一个<code>class</code>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Example extends React.Component &#123;</span><br><span class="line">  construtor(props)&#123;</span><br><span class="line">    super(props)l</span><br><span class="line">    this.state &#x3D; &#123;</span><br><span class="line">      count: 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">      	&lt;p&gt;You clicked &#123;this.state.count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;()&#x3D;&gt;this.setState(&#123;count:this.state.count + 1&#125;)&#125;&gt;</span><br><span class="line">        	Click!</span><br><span class="line">        &lt;&#x2F;button&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Hook</code>写法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123;useState&#125; from &#39;react&#39;;</span><br><span class="line">function Example()&#123;</span><br><span class="line">  &#x2F;&#x2F;声明一个名为&quot;count&quot;的state变量</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  return (</span><br><span class="line">  	&lt;div&gt;</span><br><span class="line">    	&lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;()&#x3D;&gt;setCount(count + 1)&#125;&gt;</span><br><span class="line">      	Click!</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hook和函数组件"><a href="#Hook和函数组件" class="headerlink" title="Hook和函数组件"></a><code>Hook</code>和函数组件</h3><h4 id="无状态组件（函数组件）"><a href="#无状态组件（函数组件）" class="headerlink" title="无状态组件（函数组件）"></a>无状态组件（函数组件）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Example &#x3D; (props) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F;可以使用Hook</span><br><span class="line">  return &lt;div &#x2F;&gt;;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;或者</span><br><span class="line">function Example(props)&#123;</span><br><span class="line">  &#x2F;&#x2F;可以使用Hook</span><br><span class="line">  return &lt;div &#x2F;&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Hook 在 class 内部是不起作用的，但是可以用来取代 class</strong></p>
+<h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><blockquote>
+<p>首先引入了 React 中<code>useState</code>的 Hook</p>
+<p>Hook 是一种特殊的函数，可以“钩入”React 的特性。</p>
+<p>例如，<code>useState</code>允许在 React 函数组件中添加 state 的 Hook</p>
+</blockquote>
+<p>使用 Hook 的场景</p>
+<p>在编写函数组件并需要向其添加一些 state，以前是用 class，现在可以在现有的函数组件中使用 Hook</p>
+<h3 id="声明State变量"><a href="#声明State变量" class="headerlink" title="声明State变量"></a>声明<code>State</code>变量</h3><p>在函数组件中，没有<code>this</code>，所以不能分配或读取<code>this.state</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123;useState&#125; from &#39;react&#39;;</span><br><span class="line">function Example()&#123;</span><br><span class="line">  &#x2F;&#x2F;声明一个叫&quot;count&quot;的state变量</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用<code>useState</code>方法的过程</p>
+<p>定义了一个<code>state</code>变量。这里的变量名为<code>count</code>。这是一种在函数调用时保存变量的方式——<code>useState</code>是一种新方法。与 class 里的<code>this.state</code>提供的功能完全相同。一般而言，在函数退出后变量就会消失，<code>state</code>中的变量会被 React 保留。</p>
+<hr>
+
+<p><code>useState</code>的参数</p>
+<p><code>useState()</code>方法唯一的参数就是初始<code>state</code>。</p>
+<p>不同于 class。可以按照需要使用的字符串或数组进行赋值，而不一定是对象</p>
+<p>想要在<code>state</code>中存储两个不同的变量，只需调用<code>useState()</code>两次</p>
+<hr>
+
+<p><code>useState</code>的返回值</p>
+<p>返回值为：当前<code>state</code>以及更新<code>state</code>的函数。</p>
+<p><code>const [count, setCount] = useState()</code></p>
+<hr>
+
+<p>这里声明了一个名为<code>count</code>的<code>state</code>变量，然后初始化为 0。React 会在重复渲染时记住它的值。</p>
+<p>并且提供最新的值给函数。可以通过调用<code>setCount</code>来更新当前的<code>count</code></p>
+<h3 id="读取State"><a href="#读取State" class="headerlink" title="读取State"></a>读取<code>State</code></h3><p>直接调用<code>{count}</code></p>
+<h3 id="更新State"><a href="#更新State" class="headerlink" title="更新State"></a>更新<code>State</code></h3><p><code>onClick = {() =&gt; setCount(count + 1)}</code></p>
+<h2 id="使用Effect-Hook"><a href="#使用Effect-Hook" class="headerlink" title="使用Effect Hook"></a>使用<code>Effect Hook</code></h2><blockquote>
+<p>Effect Hook 可以在函数组件中执行副作用操作</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123;useState, useEffect&#125; from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">function Example()&#123;</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;Similar to componentDidMount and componentDidUpdate;</span><br><span class="line">  useEffect(() &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;Update the document title using the browser API</span><br><span class="line">    document.title &#x3D; &#96;You clicked $&#123;count&#125; times&#96;;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">  	&lt;div&gt;</span><br><span class="line">    	&lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick &#x3D; &#123;() &#x3D;&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">      	Click</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给计数器添加了一个功能：将 document 的 title 设置为包含了点击次数的消息</p>
+<p><strong>数据获取、设置订阅以及手动更改 React 组件中的 DOM 都属于副作用</strong></p>
+<h3 id="无需清除的-effect"><a href="#无需清除的-effect" class="headerlink" title="无需清除的 effect"></a>无需清除的 effect</h3><p>只想在 React 更新 DOM 之后运行一些额外的代码。</p>
+<p>如：<strong>发送网络请求、手动变更 DOM、记录日志</strong>，这些都是常见的无需清除的操作</p>
+<p>因为在执行完这些操作过后，可以忽略</p>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3>]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+        <tag>React</tag>
+        <tag>工程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 进阶系列</title>
+    <url>/2020/01/22/JavaScript%E8%BF%9B%E9%98%B6%E7%B3%BB%E5%88%97/</url>
     <content><![CDATA[<h1 id="JavaScript-进阶系列"><a href="#JavaScript-进阶系列" class="headerlink" title="JavaScript 进阶系列"></a>JavaScript 进阶系列</h1><h2 id="解析过程与变量提升"><a href="#解析过程与变量提升" class="headerlink" title="解析过程与变量提升"></a>解析过程与变量提升</h2><h3 id="变量的提升"><a href="#变量的提升" class="headerlink" title="变量的提升"></a>变量的提升</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> web = <span class="string">'by.com'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(web);</span><br><span class="line"><span class="keyword">var</span> <span class="class"><span class="keyword">class</span> </span>= <span class="string">'asdf'</span>; <span class="comment">//关键字不可用</span></span><br></pre></td></tr></table></figure>
 
 <p>结果是不会输出<code>web</code>的内容，直接报错</p>
@@ -28,6 +92,13 @@
 <p>如果在函数体内没有声明变量，会向上寻找变量</p>
 <p>在块区域中如果使用了声明语句，声明语句必须放在使用之前，就不会出现<code>var</code>的问题</p>
 ]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript 数据结构与算法（六）树篇</title>
@@ -488,8 +559,8 @@
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>工程</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
