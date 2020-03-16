@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -105,11 +105,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Leyla Sheth" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="alternate" href="/atom.xml" title="Leyla Sheth" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband">
       <a href="https://github.com/LeylaSheth" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     </div>
@@ -287,33 +287,25 @@
 
       
         <h1 id="JavaScript-进阶系列"><a href="#JavaScript-进阶系列" class="headerlink" title="JavaScript 进阶系列"></a>JavaScript 进阶系列</h1><h2 id="解析过程与变量提升"><a href="#解析过程与变量提升" class="headerlink" title="解析过程与变量提升"></a>解析过程与变量提升</h2><h3 id="变量的提升"><a href="#变量的提升" class="headerlink" title="变量的提升"></a>变量的提升</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> web = <span class="string">'by.com'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(web);</span><br><span class="line"><span class="keyword">var</span> <span class="class"><span class="keyword">class</span> </span>= <span class="string">'asdf'</span>; <span class="comment">//关键字不可用</span></span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>结果是不会输出<code>web</code>的内容，直接报错</p>
 <p>原因：解析器在运行代码前会解析一波，在这个过程中进行了<strong>变量提升</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(web); <span class="comment">//error，web没有定义</span></span><br><span class="line"><span class="keyword">var</span> web = <span class="string">'by.com'</span>; <span class="comment">//输出undefined</span></span><br></pre></td></tr></table></figure>
-
 <p>执行前进行解析，变量提升</p>
 <p><code>var web = &quot;by.com&quot;</code>这个语句进行了 ① 声明和 ② 赋值，等同于</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> web; <span class="comment">//这一步在解析中被提升到前面</span></span><br><span class="line">web = <span class="string">'by.com'</span>;</span><br></pre></td></tr></table></figure>
-
 <p>变量提升是在代码预解析的时候进行的处理；</p>
 <h3 id="函数的例子"><a href="#函数的例子" class="headerlink" title="函数的例子"></a>函数的例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> web = <span class="string">'by.com'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(web);</span><br><span class="line">&#125;</span><br><span class="line">show();</span><br><span class="line"><span class="comment">//输出undefined，等同于在if前赋值</span></span><br></pre></td></tr></table></figure>
-
 <p>SUM：使用<code>var</code>定义赋值不是最佳的，习惯最好是先声明后使用的操作。</p>
 <h2 id="let-amp-const暂时性死区-TDC"><a href="#let-amp-const暂时性死区-TDC" class="headerlink" title="let&amp;const暂时性死区 TDC"></a><code>let</code>&amp;<code>const</code>暂时性死区 TDC</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a><code>let</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(web);</span><br><span class="line"><span class="keyword">let</span> web = <span class="string">'by.com'</span>; <span class="comment">//error报错,这里const同理</span></span><br></pre></td></tr></table></figure>
-
 <p><code>let</code>声明产生了一个临时性死区 TDC</p>
 <p><strong><code>let</code>声明，必须在声明之后才能使用。</strong></p>
 <hr>
 
 <h3 id="函数的例子-1"><a href="#函数的例子-1" class="headerlink" title="函数的例子"></a>函数的例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> web = <span class="string">'by.com'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(web);</span><br><span class="line">  <span class="comment">//let web = 'some';</span></span><br><span class="line">  <span class="comment">//如果在函数里，调用后加上声明，就会报错，cannot access 'web'...</span></span><br><span class="line">&#125;</span><br><span class="line">func();</span><br><span class="line"><span class="comment">//输出by.com</span></span><br></pre></td></tr></table></figure>
-
 <p>如果在函数体内没有声明变量，会向上寻找变量</p>
 <p>在块区域中如果使用了声明语句，声明语句必须放在使用之前，就不会出现<code>var</code>的问题</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">a=b,b=<span class="number">3</span></span>)</span>&#123;&#125;</span><br><span class="line">run() <span class="comment">//error cannot access 'b'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run1</span>(<span class="params">a=<span class="number">3</span>,b=a</span>)</span>&#123;&#125;<span class="comment">//这样是不会报错的，a已经赋值了</span></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -333,12 +325,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/20/JavaScript6/" rel="prev" title="JavaScript 数据结构与算法（六）树篇">
-      <i class="fa fa-chevron-left"></i> JavaScript 数据结构与算法（六）树篇
+    <a href="/2020/01/22/React-Hook/" rel="prev" title="React-Hook">
+      <i class="fa fa-chevron-left"></i> React-Hook
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/01/22/React-Hook/" rel="next" title="React-Hook">
-      React-Hook <i class="fa fa-chevron-right"></i>
+    <a href="/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/" rel="next" title="React H5开发有感">
+      React H5开发有感 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -554,5 +546,5 @@
    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
    <script type="text/javascript" src="/js/src/fireworks.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>
