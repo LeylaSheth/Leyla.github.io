@@ -213,6 +213,449 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" class="post-title-link" itemprop="url">群论</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-16 14:00:50 / 修改时间：16:54:20" itemprop="dateCreated datePublished" datetime="2020-03-16T14:00:50+08:00">2020-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study-in-school/" itemprop="url" rel="index">
+                    <span itemprop="name">study in school</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="离散数学"><a href="#离散数学" class="headerlink" title="离散数学"></a>离散数学</h1><h2 id="代数系统"><a href="#代数系统" class="headerlink" title="代数系统"></a>代数系统</h2><h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>定义 1-1：</p>
+<p>$$<br>设有非空集合A，函数f:A^n \Rightarrow A称为A上的一个n元运算，n是这个运算的阶<br>$$</p>
+<h4 id="表示方法"><a href="#表示方法" class="headerlink" title="表示方法"></a>表示方法</h4><p>A 是有限集合，A 上的一元运算有时采用运算表的方式来定义</p>
+<table>
+<thead>
+<tr>
+<th>$\circ$</th>
+<th>$a_1$</th>
+<th>$a_2$</th>
+<th>…</th>
+<th>$a_n$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$a_1$</td>
+<td>$\circ(a_1,a_1)$</td>
+<td>$\circ(a_1,a_2)$</td>
+<td>…</td>
+<td>$\circ(a_1,a_n)$</td>
+</tr>
+<tr>
+<td>$a_2$</td>
+<td>$\circ(a_2,a_1)$</td>
+<td>$\circ(a_2,a_2)$</td>
+<td>…</td>
+<td>$\circ(a_2,a_n)$</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>$a_n$</td>
+<td>$\circ(a_n,a_1)$</td>
+<td>$\circ(a_n,a_2)$</td>
+<td>…</td>
+<td>$\circ(a_n,a_n)$</td>
+</tr>
+</tbody></table>
+<h4 id="运算的封闭性"><a href="#运算的封闭性" class="headerlink" title="运算的封闭性"></a>运算的封闭性</h4><p>定义 1-2：</p>
+<p>$$<br>设\ast是集合A上的一个二元（或一元运算），S\subseteq A，若对于每一个序偶(a_i,a_j)\in S^2\都有\ast(a_i,a_j)\in S，则称运算\ast在S是封闭的<br>$$</p>
+<h4 id="二元运算常见性质"><a href="#二元运算常见性质" class="headerlink" title="二元运算常见性质"></a>二元运算常见性质</h4><ul>
+<li>交换律</li>
+<li>结合律</li>
+<li>分配律</li>
+</ul>
+<h4 id="特殊元素"><a href="#特殊元素" class="headerlink" title="特殊元素"></a>特殊元素</h4><p>单位元</p>
+<p>$$<br>设\ast是集合A上的二元运算，<br>\若存在一元素e_l\in A，使得对\forall a\in A，<br>\有e_l\ast a=a，则称e_l是A中运算\ast的左单位元<br>\若存在一元素e_r\in A，使得对\forall a\in A，<br>\有a\ast e_r=a，则称e_r是A中运算\ast的右单位元<br>\若存在一元素e\in A，使得对\forall a\in A，<br>\有e\ast a=a\ast e=a，则称e是A中运算\ast的单位元<br>$$</p>
+<p>在运算表中的体现可以判断是否为单位元</p>
+<hr>
+零元
+$$
+设\ast是集合A上的二元运算，
+\\若存在一元素z_l\in A，使得对\forall a\in A，
+\\有z_l\ast a=z_l，则称z_l是A中运算\ast的左零元
+\\若存在一元素z_r\in A，使得对\forall a\in A，
+\\有a\ast z_r=z_r，则称z_r是A中运算\ast的右零元
+\\若存在一元素z\in A，使得对\forall a\in A，
+\\有z\ast a=a\ast z=z，则称z是A中运算\ast的零元
+$$
+
+<hr>
+幂等元
+$$
+设\ast是集合A中的二元运算，若a\in A且a\ast a=a,
+\\则称a是A中关于运算\ast的幂等元
+$$
+
+<hr>
+元素的逆元
+$$
+设*是集合A上具有单位元e的二元运算，对于元素a\in A，
+\\若存在一元素a_l^{-1}\in A,使得a_l^{-1}\ast a=e,
+\\则称a关于\ast是左可逆，称a_l^{-1}是a的左逆元
+\\若存在一元素a_r^{-1}\in A,使得a\ast a_r^{-1}=e,
+\\则称a关于\ast是右可逆，称a_l^{-1}是a的右逆元
+\\若存在一元素a^{-1}\in A,使得a^{-1}\ast a=a\ast a^{-1}=e,
+\\则称a关于\ast是可逆，称a_l^{-1}是a的逆元
+$$
+
+<hr>
+定理
+$$
+设\ast是集合A上具有单位元e且和结合的二元运算，
+\\若元素a\in A有左逆元a_l^{-1}和右逆元a_r^{-1}
+\\则a_l^{-1}=a_r^{-1}=a^{-1},且a^{-1}是a唯一的逆元
+$$
+定理
+$$
+设\ast是集合A上的二元运算，且\# A>1
+\\若运算\ast有单位元e和零元z，则e\neq z
+$$
+
+<h3 id="代数系统-1"><a href="#代数系统-1" class="headerlink" title="代数系统"></a>代数系统</h3><p>定义</p>
+<p>$$<br>一个非空集合S和定义在该集合上的一个或多个运算\circ_1,\circ_2,…,\circ_n所组成的系统<br>\称为代数系统，表示为&lt;S;\circ_1,\circ_2,…,\circ_n&gt;<br>\S称为该代数系统的域<br>$$</p>
+<h4 id="子代数"><a href="#子代数" class="headerlink" title="子代数"></a>子代数</h4><p>$$<br>设&lt;S;\circ_1,\circ_2,\circ_3&gt;是一个代数系统，其中\circ_i(i=1,2,3)均是一元或二元运算<br>\H是S的一个非空子集，若S上的这三个运算在H上也都是封闭的<br>\则称&lt;H;\circ_1,\circ_2,\circ_3&gt;是&lt;S;\circ_1,\circ_2,\circ_3&gt;的子代数或子系统<br>$$</p>
+<h3 id="代数系统的同态和同构"><a href="#代数系统的同态和同构" class="headerlink" title="代数系统的同态和同构"></a>代数系统的同态和同构</h3><h4 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h4><p>$$<br>设V_1=&lt;S;\ast_1,\circ_1,\sim_1&gt;与V_2=&lt;S;\ast_2,\circ_2,\sim_2&gt;是两个代数系统<br>\h是从S_1到S_2的一个函数，对于\forall x,y\in S_1,有<br>\h(x\ast_1y)=h(x)\ast_2h(y)<br>\h(x\circ_1y)=h(x)\circ_2h(y)<br>\对于\forall x\in S_1,有h(\sim_1(x))=\sim_2(h(x))<br>\则称h是从代数系统V_1到V2的一个同态<br>$$</p>
+<p>即先运算后取象等同于先取象后运算</p>
+<p>两集合中对应元素的运算结果仍然对应</p>
+<h5 id="由特殊函数定义的特殊同态"><a href="#由特殊函数定义的特殊同态" class="headerlink" title="由特殊函数定义的特殊同态"></a>由特殊函数定义的特殊同态</h5><p>$$<br>设h:S_1\Rightarrow S_2是代数系统V_1=&lt;S;\ast_1,\circ_1,\sim_1&gt;到V_2=&lt;S;\ast_2,\circ_2,\sim_2&gt;的同态<br>\如果h是内射，则称h是从V_1到V_2的单一同态<br>\如果h是满射，则称h是从V_1到V_2的满同态<br>\如果h是双射，则称h是从V_1到V_2的同构<br>$$</p>
+<ul>
+<li><strong>单射</strong>：指将不同的变量<a href="http://zh.wikipedia.org/wiki/映射" target="_blank" rel="noopener">映射</a>到不同的值的函数。</li>
+<li><strong>满射</strong>：指<a href="http://zh.wikipedia.org/wiki/陪域" target="_blank" rel="noopener">陪域</a>等于<a href="http://zh.wikipedia.org/wiki/值域" target="_blank" rel="noopener">值域</a>的函数。即：对陪域中任意元素，都存在至少一个定义域中的元素与之对应。</li>
+<li><strong>双射</strong>（也称<strong>一一对应</strong>）：既是<a href="http://zh.wikipedia.org/wiki/单射" target="_blank" rel="noopener">单射</a>又是<a href="http://zh.wikipedia.org/wiki/满射" target="_blank" rel="noopener">满射</a>的函数。直观地说，一个双射函数形成一个对应，并且每一个输入值都有正好一个输出值以及每一个输出值都有正好一个输入值。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>双射（单射与满射）</th>
+<th>单射但非满射</th>
+<th>满射但非单射</th>
+<th>非满射非单射</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/image-20191103171736396.png" alt="image-20191103171736396"></td>
+<td><img src="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/image-20191103171755708.png" alt="image-20191103171755708"></td>
+<td><img src="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/image-20191103171817754.png" alt="image-20191103171817754"></td>
+<td><img src="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/image-20191103171837067.png" alt="image-20191103171837067"></td>
+</tr>
+</tbody></table>
+<hr>
+##### 满同态的性质
+
+<p>$$<br>设h是代数系统V_1=&lt;S;\ast_1,\circ_1,\sim_1&gt;到V_2=&lt;S;\ast_2,\circ_2,\sim_2&gt;的一个满同态，则<br>\若\ast_1(\circ_1)是可交换的，则\ast_2(\circ_2)也是可交换的<br>\若\ast_1(\circ_1)是可结合的，则\ast_2(\circ_2)也是可结合的<br>\若\ast_1对\circ_1是可分配的，则\ast_2对\circ_2也是可分配的<br>\在V_1中若\ast_1(\circ_1)具有单位元e，则V_2中\ast_2(\circ_2)也具有单位元h(e)<br>\在V_1中若\ast_1(\circ_1)具有零元z，则V_2中\ast_2(\circ_2)也具有零元h(z)<br>\若对于\ast_1(\circ_1)，S_1元素x具有逆元x^{-1},则对于\ast_2(\circ_2)x的象也具有逆元h(x^{-1})<br>$$</p>
+<h4 id="同构"><a href="#同构" class="headerlink" title="同构"></a>同构</h4><p>$$<br>设h是代数系统V_1=&lt;S;\ast_1,\circ_1,\sim_1&gt;到V_2=&lt;S;\ast_2,\circ_2,\sim_2&gt;的一个同构，<br>\那么h是从S_1到S_2的双射，此时h存在逆函数h^{-1}:S_2\Rightarrow S_1<br>$$</p>
+<p>抽象来看，两个同构的代数系统可以看作同一个代数系统来研究</p>
+<h3 id="代数系统的积代数"><a href="#代数系统的积代数" class="headerlink" title="代数系统的积代数"></a>代数系统的积代数</h3><p>$$<br>设代数系统V_1=&lt;S_1;\ast&gt;和V_2=&lt;S_2;\circ&gt;（都是二元运算）<br>\V_1和V_2的积代数是一个代数系统V_1\times V_2=&lt;S;\oplus&gt;,<br>\其中S=S_1\times S_2={(x_1,X_2)|x_1\in S_1,x_2\in S_2}<br>\\oplus是二元运算，定义为对\forall(x_1,x_2),(y_1,y_2)\in S<br>\(x_1,x_2)\oplus(y_1,y_2)=(x_1\ast y_1,x_2\circ y_2)<br>$$</p>
+<h2 id="几种典型的代数系统"><a href="#几种典型的代数系统" class="headerlink" title="几种典型的代数系统"></a>几种典型的代数系统</h2><h3 id="半群和独异点"><a href="#半群和独异点" class="headerlink" title="半群和独异点"></a>半群和独异点</h3><p>半群的定义</p>
+<p>$$<br>设S是一个非空集合，\ast是S上的一个二元运算，<br>\若\ast是可结合的，则称代数系统&lt;S;\ast&gt;是半群<br>$$</p>
+<hr>
+独异点的定义
+$$
+若半群<S;\ast>中运算\ast有单位元，则称<S;\ast>为独异点
+$$
+
+<hr>
+子半群
+$$
+设<S;\ast>是一个半群，若<T;\ast>是<S;\ast>的子代数，
+\\则称<T;\ast>是<S;\ast>的子半群
+$$
+
+<hr>
+子独异点
+$$
+设<S;\ast>是一独异点，若<T;\ast>是<S;\ast>的子代数，且单位元e\in T，
+\\则称<T;\ast>是<S;\ast>的子独异点
+$$
+
+<h3 id="群的定义"><a href="#群的定义" class="headerlink" title="群的定义"></a>群的定义</h3><p>群的定义</p>
+<p>$$<br>设&lt;G;\ast&gt;是一个代数系统，如果运算\ast是可结合的，存在单位元<br>\且G中任何元素a都有逆元a^{-1}，则称&lt;G;\ast&gt;是一个群</p>
+<p>\结合律：对\forall a,b,c\in G，有a\ast(b\ast c)=(a\ast b)\ast c<br>\存在单位元<br>\每个元素都有逆元<br>$$</p>
+<hr>
+循环群
+
+<p>群中元素的幂</p>
+<p>$$<br>对于任意a\in G<br>\a^0=e;a^{n+1}=a^n\ast a<br>\(a^{-1})^0=e,(a^{-1})^{n+1}=(a^{-1})^n\ast a^{-1}<br>\对于任意整数m和n，依然成立<br>\a^m\ast a^n=a^{m+n};(a^m)^n=a^{mn}<br>$$</p>
+<hr>
+循环群
+$$
+在群<G;\ast>中，若存在一元素g\in G,使得每一个元素a\in G都能表示成g^i(i\in I)
+\\则称群<G;\ast>为循环群，称g为该循环群的生成元，并称群<G;\ast>由g生成
+$$
+
+<hr>
+群的阶
+$$
+设<G;\ast>是一个群，如果G是有限集，则称<G;\ast>是有限群
+\\G中元素的个数称为群<G;\ast>的阶
+$$
+
+<hr>
+元素的周期
+$$
+设<G;\ast>是一个群，a\in G，若存在正整数r，
+\\使得a^r=e，则称元素a具有有限周期
+\\使得a^r=e成立的最小正整数r称为a的周期
+\\若对于任何正整数r，均有a^r\neq e,
+\\则称a的周期为无限
+$$
+
+<hr>
+定理
+$$
+设<G;\ast>是一由元素g生成的循环群，则
+\\若g的周期为n，则<G;\ast>是一个阶为n的有限循环群
+\\若g的周期为无限，则<G;\ast>是一个无限阶的循环群
+$$
+
+<h3 id="群的性质"><a href="#群的性质" class="headerlink" title="群的性质"></a>群的性质</h3><h4 id="相约性"><a href="#相约性" class="headerlink" title="相约性"></a>相约性</h4><p>$$<br>设&lt;G;\ast&gt;是一个群，则对任意的a,b\in G<br>\存在唯一的元素x\in G，使得a\ast x=b<br>\存在唯一的元素y\in G，使得y\ast a=b<br>$$</p>
+<hr>
+$$
+设<G;\ast>是一个群，则对任意的a,b,c\in G
+\\若a\ast b=a\ast c，则b=c
+\\若b\ast a=c\ast a，则b=c
+$$
+
+<hr>
+#### 元素运算后求逆元等于元素分别求逆元后颠倒次序相运算
+
+<p>$$<br>群中的任意元素<br>(a\ast b)^{-1}=b^{-1}\ast a^{-1}<br>$$</p>
+<hr>
+#### 关于元素的周期
+
+<p>$$<br>群&lt;G;\ast&gt;中的元素a若具有有限后期r，则当且仅当k是r的整数倍时，a^k=e<br>\群中任一元素与它的逆元具有相同的周期<br>\在有限群&lt;G;\ast&gt;中，每个元素均具有优先周期，且周期不超过群的阶<br>$$</p>
+<h3 id="子群及其判别"><a href="#子群及其判别" class="headerlink" title="子群及其判别"></a>子群及其判别</h3><p>子群的定义</p>
+<p>$$<br>设&lt;G;\ast&gt;是一个群，若&lt;H;\ast&gt;是&lt;G;\ast&gt;的子代数，<br>\单位元e\in H，且对任意的a\in H，有a^{-1}\in H<br>\则称&lt;H;\ast&gt;是&lt;G\ast&gt;的子群<br>$$</p>
+<p><img src="/2020/03/16/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/image-20191103183704955.png" alt="image-20191103183704955"></p>
+<p>子群的判别</p>
+<ol>
+<li>封闭性：对于任意 a,b $\in H$,是否有 $a*b\in H$;</li>
+<li>单位元：是否有$e\in H$</li>
+<li>可逆性：对于任意$a\in H$，是否有$a^{-1}\in H$</li>
+</ol>
+<p>定理</p>
+<p>$$<br>设&lt;G;\ast&gt;是一个群，H是G的一个非空子集<br>\若对于任意a,b\in H，有a\ast b^{-1}\in H，<br>\则&lt;H;\ast&gt;是&lt;G;\ast&gt;的子群<br>$$</p>
+<hr>
+$$
+设<G;\ast>是一有限群，若<H;\ast>是<G;\ast>的子代数，
+\\则<H;\ast>是<G;\ast>的子群
+$$
+
+<hr>
+$$
+设<G;\ast>是一个群，若<H;\ast>是<G;\ast>的有限子代数，
+\\则<H;\ast>是<G;\ast>的子群
+$$
+
+<h3 id="子群等价定义"><a href="#子群等价定义" class="headerlink" title="子群等价定义"></a>子群等价定义</h3><p>$$<br>若&lt;H;<em>&gt;是群&lt;G;</em>&gt;的子群，则&lt;H;<em>&gt;自身必然是群<br>\设&lt;G;</em>&gt;是一个群，H是G的非空子集，<br>\若&lt;H;<em>&gt;也是群，则&lt;H;</em>&gt;必是&lt;G;*&gt;的子群<br>$$</p>
+<h3 id="格"><a href="#格" class="headerlink" title="格"></a>格</h3><h4 id="偏序集"><a href="#偏序集" class="headerlink" title="偏序集"></a>偏序集</h4><ul>
+<li>自反</li>
+<li>反对称</li>
+<li>可传递</li>
+</ul>
+<p>$$<br>集合L和定义在L上的偏序关系“\preceq”一起称为偏序集，表示为&lt;L;\preceq&gt;<br>\&lt;R;\leq&gt;,&lt;I;\leq&gt;,&lt;2^U;\subseteq&gt;,&lt;N;|&gt;<br>\若\rho是集合A上的偏序关系，则\rho的你关系也必然是A上的偏序关系<br>$$</p>
+<h4 id="最大下界和最小上界"><a href="#最大下界和最小上界" class="headerlink" title="最大下界和最小上界"></a>最大下界和最小上界</h4><p>$$<br>设l_1和l_2是偏序集&lt;L;\preceq&gt;中的两个元素，元素a\in L<br>\若满足a\preceq l_1,a\preceq l_2<br>\则称a是l_1和l_2的下界<br>\如果a是l_1和l_2的下界，且对于任意a’\in L，<br>\若a’也是l_1和l_2的下界，便有a’\preceq a<br>\则称a是l_1和l_2的最大下界，简记a=glb(l_1,l_2)<br>$$</p>
+<hr>
+$$
+设l_1和l_2是偏序集<L;\preceq>中的两个元素，元素b\in L
+\\若满足l_1\preceq b,l_2\preceq b
+\\则称b是l_1和l_2的上界
+\\如果b是l_1和l_2的上界，且对于任意b’\in L，
+\\若b'也是l_1和l_2的上界，便有b\preceq b’
+\\则称b是l_1和l_2的最小上界，简记b=lub(l_1,l_2)
+$$
+
+<hr>
+定理
+$$
+设l_1和l_2是偏序集<L;\preceq>的两个元素，如果l_1和l_2 有glb，则glb是唯一的。lub也是
+$$
+
+<hr>
+#### 最小元素和最大元素
+
+<p>$$<br>设&lt;L;\preceq&gt;是一个偏序集<br>\1.如果存在元素a\in L，使得对于所有的元素l\in L，都有a\preceq l,则称a是最小元素（最大元素同理）<br>$$</p>
+<hr>
+定理
+$$
+如果偏序集<L;\preceq>有最小元素，则最小元素是唯一的，最大元素同理
+$$
+
+<h3 id="格的定义"><a href="#格的定义" class="headerlink" title="格的定义"></a>格的定义</h3><p>$$<br>设&lt;L;\preceq&gt;是一个偏序集，如果L中任意两个元素都存在着最大下界和最小上界，则称它是格<br>$$</p>
+<h4 id="格的性质"><a href="#格的性质" class="headerlink" title="格的性质"></a>格的性质</h4><p>$$<br>在格&lt;L;\preceq&gt;中，对于任意l_1,l_2\in L以下任一成立，则都成立<br>\l_1 \vee l_2=l_1<br>\l_1\wedge l_2=l_2<br>\l_2\leqslant l_1<br>$$</p>
+<hr>
+</L;\preceq></L;\preceq></L;\preceq></G;\ast></H;\ast></G;\ast></H;\ast></G;\ast></G;\ast></H;\ast></G;\ast></H;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></G;\ast></S;\ast></T;\ast></S;\ast></T;\ast></S;\ast></S;\ast></T;\ast></S;\ast></T;\ast></S;\ast></S;\ast></S;\ast>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/" class="post-title-link" itemprop="url">React H5开发有感</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-27 14:00:50 / 修改时间：15:16:35" itemprop="dateCreated datePublished" datetime="2020-02-27T14:00:50+08:00">2020-02-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>18k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="React-H5-开发有感"><a href="#React-H5-开发有感" class="headerlink" title="React H5 开发有感"></a>React H5 开发有感</h1><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="官方脚手架"><a href="#官方脚手架" class="headerlink" title="官方脚手架"></a>官方脚手架</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line"><span class="built_in">cd</span> my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/Promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -281,97 +724,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/02/27/Promise/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/" class="post-title-link" itemprop="url">React H5开发有感</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-27 14:00:50 / 修改时间：14:59:58" itemprop="dateCreated datePublished" datetime="2020-02-27T14:00:50+08:00">2020-02-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>17k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React-H5-开发有感"><a href="#React-H5-开发有感" class="headerlink" title="React H5 开发有感"></a>React H5 开发有感</h1><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="官方脚手架"><a href="#官方脚手架" class="headerlink" title="官方脚手架"></a>官方脚手架</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line"><span class="built_in">cd</span> my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/27/React-H5%E5%BC%80%E5%8F%91%E6%9C%89%E6%84%9F/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1080,106 +1432,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/15/JavaScript1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Lee Yue">
-      <meta itemprop="description" content="Some Blogs">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leyla Sheth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/15/JavaScript1/" class="post-title-link" itemprop="url">JavaScript数据结构与算法（一）数组与列表篇</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-15 16:45:50" itemprop="dateCreated datePublished" datetime="2020-01-15T16:45:50+08:00">2020-01-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-18 23:23:08" itemprop="dateModified" datetime="2020-01-18T23:23:08+08:00">2020-01-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="JavaScript-数据结构与算法（一）数组与列表篇"><a href="#JavaScript-数据结构与算法（一）数组与列表篇" class="headerlink" title="JavaScript 数据结构与算法（一）数组与列表篇"></a>JavaScript 数据结构与算法（一）数组与列表篇</h1><blockquote>
-<p>数组的标准定义：一个存储元素的线性集合，元素可以通过索引来任意存取</p>
-</blockquote>
-<p>JavaScript 中的数组是一种特殊的对象，用来表示偏移量的索引是该对象的属性，数字索引在内部被转换为字符串类型。JavaScript 对象中的属性名必须是字符串，效率不比其他语言</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/15/JavaScript1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1252,20 +1504,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1312,12 +1564,12 @@
   <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-  <span title="站点总字数">112k</span>
+  <span title="站点总字数">119k</span>
   <span class="post-meta-divider">|</span>
   <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-  <span title="站点阅读时长">1:42</span>
+  <span title="站点阅读时长">1:48</span>
 </div>
 <!-- <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div> -->
