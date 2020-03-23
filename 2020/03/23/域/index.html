@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="域域的定义与性质域的定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论">
+<meta property="og:url" content="http://yoursite.com/2020/03/23/%E5%9F%9F/index.html">
+<meta property="og:site_name" content="Leyla Sheth">
+<meta property="og:description" content="域域的定义与性质域的定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-23T06:00:50.000Z">
+<meta property="article:modified_time" content="2020-03-23T11:44:09.077Z">
+<meta property="article:author" content="Lee Yue">
+<meta property="article:tag" content="数论">
+<meta property="article:tag" content="study in school">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/23/%E5%9F%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>数论 | Leyla Sheth</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Leyla Sheth" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband">
+      <a href="https://github.com/LeylaSheth" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leyla Sheth</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">BingYan Studio FED Fox</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数论
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-23 14:00:50 / 修改时间：19:44:09" itemprop="dateCreated datePublished" datetime="2020-03-23T14:00:50+08:00">2020-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study-in-school/" itemprop="url" rel="index">
+                    <span itemprop="name">study in school</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="域"><a href="#域" class="headerlink" title="域"></a>域</h1><h2 id="域的定义与性质"><a href="#域的定义与性质" class="headerlink" title="域的定义与性质"></a>域的定义与性质</h2><h3 id="域的定义"><a href="#域的定义" class="headerlink" title="域的定义"></a>域的定义</h3><a id="more"></a>
+<p>定义</p>
+<script type="math/tex; mode=display">
+设\mathbb{F}是一个非空集合，在其上定义了两种运算，分别为加法和乘法
+\\记作“+”和“·”，对于\mathbb{F}中的任意两个元素a，b，
+\\均有a+b\in\mathbb{F}，a·b\in\mathbb{F}（\mathbb{F}对于加法和乘法自封闭）
+\\\mathbb{F}对于所规定的运算成为一个域
+\\(1)\mathbb{F}中所有元素对于加法形成一个加法交换群
+\\(2)\mathbb{F}所有非零元素(记作\mathbb{F}^*)对于乘法形成一个乘法交换群
+\\(3)对于任意a,b,c\in\mathbb{F}，a(b+c)=ab+ac（满足分配率）</script><p><strong>一个域至少有两个元素，即<em>加法群的零元</em>和<em>乘法群的单位元</em>，分别是域的零元和单位元</strong></p>
+<p>当域的元素个数有限时称为有限域，或者伽罗华域，否则为无限域</p>
+<script type="math/tex; mode=display">
+常见的有理数集合\mathbb{Q}，实数集合\mathbb{R}和复数集合\mathbb{C}
+\\按照定义的加法和乘法都形成域，分别称为有理数域，实数域和复数域</script><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><h4 id="半群和独异点"><a href="#半群和独异点" class="headerlink" title="半群和独异点"></a>半群和独异点</h4><p>半群的定义</p>
+<script type="math/tex; mode=display">
+设S是一个非空集合，\ast是S上的一个二元运算，
+\\若\ast是可结合的，则称代数系统<S;\ast>是半群</script><hr>
+
+<p>独异点的定义</p>
+<script type="math/tex; mode=display">
+若半群<S;\ast>中运算\ast有单位元，则称<S;\ast>为独异点</script><hr>
+
+<p>子半群</p>
+<script type="math/tex; mode=display">
+设<S;\ast>是一个半群，若<T;\ast>是<S;\ast>的子代数，\\则称<T;\ast>是<S;\ast>的子半群</script><hr>
+
+<p>子独异点</p>
+<script type="math/tex; mode=display">
+设<S;\ast>是一独异点，若<T;\ast>是<S;\ast>的子代数，且单位元e\in T，
+\\则称<T;\ast>是<S;\ast>的子独异点</script><h4 id="群的定义"><a href="#群的定义" class="headerlink" title="群的定义"></a>群的定义</h4><p>群的定义</p>
+<script type="math/tex; mode=display">
+设<G;\ast>是一个代数系统，如果运算\ast是可结合的，存在单位元
+\\且G中任何元素a都有逆元a^{-1}，则称<G;\ast>是一个群
+
+\\结合律：对\forall a,b,c\in G，有a\ast(b\ast c)=(a\ast b)\ast c
+\\存在单位元
+\\每个元素都有逆元</script><hr>
+
+<h4 id="循环群"><a href="#循环群" class="headerlink" title="循环群"></a>循环群</h4><p>群中元素的幂</p>
+<script type="math/tex; mode=display">
+对于任意a\in G
+\\a^0=e;a^{n+1}=a^n\ast a
+\\(a^{-1})^0=e,(a^{-1})^{n+1}=(a^{-1})^n\ast a^{-1}
+\\对于任意整数m和n，依然成立
+\\a^m\ast a^n=a^{m+n};(a^m)^n=a^{mn}</script><hr>
+
+<p>循环群</p>
+<script type="math/tex; mode=display">
+在群<G;\ast>中，若存在一元素g\in G,使得每一个元素a\in G都能表示成g^i(i\in I)
+\\则称群<G;\ast>为循环群，称g为该循环群的生成元，并称群<G;\ast>由g生成</script><hr>
+
+<p>群的阶</p>
+<script type="math/tex; mode=display">
+设<G;\ast>是一个群，如果G是有限集，则称<G;\ast>是有限群
+\\G中元素的个数称为群<G;\ast>的阶</script><hr>
+
+<p>元素的周期</p>
+<script type="math/tex; mode=display">
+设<G;\ast>是一个群，a\in G，若存在正整数r，
+\\使得a^r=e，则称元素a具有有限周期
+\\使得a^r=e成立的最小正整数r称为a的周期
+\\若对于任何正整数r，均有a^r\neq e,
+\\则称a的周期为无限</script><hr>
+
+<p>定理</p>
+<script type="math/tex; mode=display">
+设<G;\ast>是一由元素g生成的循环群，则
+\\若g的周期为n，则<G;\ast>是一个阶为n的有限循环群
+\\若g的周期为无限，则<G;\ast>是一个无限阶的循环群</script><h4 id="群的性质"><a href="#群的性质" class="headerlink" title="群的性质"></a>群的性质</h4><h4 id="相约性"><a href="#相约性" class="headerlink" title="相约性"></a>相约性</h4><script type="math/tex; mode=display">
+设<G;\ast>是一个群，则对任意的a,b\in G
+\\存在唯一的元素x\in G，使得a\ast x=b
+\\存在唯一的元素y\in G，使得y\ast a=b</script><hr>
+
+<script type="math/tex; mode=display">
+设<G;\ast>是一个群，则对任意的a,b,c\in G
+\\若a\ast b=a\ast c，则b=c
+\\若b\ast a=c\ast a，则b=c</script><hr>
+
+<h4 id="元素运算后求逆元等于元素分别求逆元后颠倒次序相运算"><a href="#元素运算后求逆元等于元素分别求逆元后颠倒次序相运算" class="headerlink" title="元素运算后求逆元等于元素分别求逆元后颠倒次序相运算"></a>元素运算后求逆元等于元素分别求逆元后颠倒次序相运算</h4><script type="math/tex; mode=display">
+群中的任意元素
+(a\ast b)^{-1}=b^{-1}\ast a^{-1}</script><hr>
+
+<h4 id="关于元素的周期"><a href="#关于元素的周期" class="headerlink" title="关于元素的周期"></a>关于元素的周期</h4><script type="math/tex; mode=display">
+群<G;\ast>中的元素a若具有有限后期r，则当且仅当k是r的整数倍时，a^k=e
+\\群中任一元素与它的逆元具有相同的周期
+\\在有限群<G;\ast>中，每个元素均具有优先周期，且周期不超过群的阶</script><hr>
+
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>以下集合按照所定义的加法和乘法均形成域</p>
+<script type="math/tex; mode=display">
+(1)\mathbb{Q}[\sqrt{2}]=\{a+b\sqrt{2}|a,b\in\mathbb{Q}\}，加法和乘法分别为实数域\mathbb{R}上的加法和乘法
+\\(2)\mathbb{R}[\sqrt{-2}]=\{a+b\sqrt{-2}|a,b\in\mathbb{R}\}，加法和乘法分别为复数域\mathbb{C}上的加法和乘法
+\\(3)\mathbb{Z}_p=\{0,1,…,p-1\}，p为素数，加法和乘法分别为模p的加法和乘法</script><hr>
+
+<p>以下集合按照所定义的加法和乘法均不形成域</p>
+<script type="math/tex; mode=display">
+(1)全体整数所形成的集合\mathbb{Z}，加法和乘法分别是\mathbb{Z}上的加法和乘法
+\\(2)集合\{a+b\sqrt[3]{2}|a,b\in\mathbb{Q}\}，加法和乘法分别是...
+\\(3)\mathbb{Z}_m=\{0,1,...,m-1\}，m为合数，加法和乘法分别为模m的加法和乘法</script><h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><script type="math/tex; mode=display">
+设\mathbb{F}是一个域，那么，
+\\(1)对于任意a\in\mathbb{F}，0a=a0=0；
+\\(2)任意a,b\in\mathbb{F}，若ab=0，则a=0或b=0</script><h2 id="子域和扩域"><a href="#子域和扩域" class="headerlink" title="子域和扩域"></a>子域和扩域</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><script type="math/tex; mode=display">
+设\mathbb{F}是一个域，\mathbb{F}_0是\mathbb{F}的非空子集，
+\\如果对于\mathbb{F}上的加法和乘法，\mathbb{F}自身也是一个域，
+\\则称\mathbb{F}_0是\mathbb{F}的子域，\mathbb{F}是\mathbb{F}_0的扩域，
+\\记作\mathbb{F}_0\subset \mathbb{F}
+\\例如：\mathbb{Q}\subset\mathbb{Q}[\sqrt{2}]\subset\mathbb{R}\subset\mathbb{R}[\sqrt{-2}]\subset\mathbb{C}</script><hr>
+
+<h3 id="判断方法"><a href="#判断方法" class="headerlink" title="判断方法"></a>判断方法</h3><p>定理</p>
+<script type="math/tex; mode=display">
+设\mathbb{F}_0、\mathbb{F}_0^*均是域\mathbb{F}的非空子集
+\\当且仅当以下条件成立时\mathbb{F}_0是域\mathbb{F}的子域
+\\(1)任意a,b\in\mathbb{F}_0，都有-a,a+b\in\mathbb{F}_0
+\\(2)任意非零元素a,b\in\mathbb{F}_0，都有a^{-1},ab\in\mathbb{F}_0</script><h2 id="特征的定义"><a href="#特征的定义" class="headerlink" title="特征的定义"></a>特征的定义</h2><script type="math/tex; mode=display">
+设\mathbb{F}是一个域，如果存在正整数m，使得对于任意a\in\mathbb{F}均有ma=0，
+\\则在所有m中，最小的正整数称为域\mathbb{F}的特征；
+\\否则，如果不存在正整数m，使得对于任意a\in\mathbb{F}均有ma=0，
+\\则称域\mathbb{F}的特征为0。
+域\mathbb{F}的特征记作char(\mathbb{F})</script><h3 id="域的同构"><a href="#域的同构" class="headerlink" title="域的同构"></a>域的同构</h3><script type="math/tex; mode=display">
+设\mathbb{F}，\mathbb{K}是两个域，如果存在\mathbb{F}到\mathbb{K}上的一一映射\delta ，
+\\使得对于任意a，b\in\mathbb{F}，均有
+\\\delta (a+b)=\delta (a)+\delta (b)，\delta (ab)=\delta (a)\delta (b)
+\\则称\delta 为\mathbb{F}到\mathbb{K}上的同构映射，此时称域\mathbb{F}、\mathbb{K}同构，记作\mathbb{F}\cong \mathbb{K}
+\\如果\mathbb{F}=\mathbb{K}，则称\delta为自同构映射，特别的，
+\\若进一步对于任意a\in\mathbb{F}均有\delta(a)=a，则称\delta为恒等自同构映射</script><h3 id="素域"><a href="#素域" class="headerlink" title="素域"></a>素域</h3><script type="math/tex; mode=display">
+一个域的最小子域称为该域的素域
+\\设\mathbb{F}是一个域，如果char(\mathbb{F})为正整数，则必为某个素数p。
+\\特征为素数p的域的素域与\mathbb{Z}_p同构，特征为0的域的素域与\mathbb{Q}同构</script><h2 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h2><script type="math/tex; mode=display">
+设\mathbb{F}是一个域，a,b\in\mathbb{F}，则对于任意正整数n
+\\(a+b)^n=\sum_{i=0}^{n}\binom{n}{i}a^{n-i}b^i</script><h3 id="特征幂的二项式定理"><a href="#特征幂的二项式定理" class="headerlink" title="特征幂的二项式定理"></a>特征幂的二项式定理</h3><script type="math/tex; mode=display">
+设\mathbb{F}是一个域，char(F)=p，则对于任意a,b\in\mathbb{F}，n\geqslant 0，均有
+\\(a\pm b)^{p^n}=a^{p^n}\pm b^{p^n}</script><h3 id="域上的多项式"><a href="#域上的多项式" class="headerlink" title="域上的多项式"></a>域上的多项式</h3><script type="math/tex; mode=display">
+对于非负整数i，a_ix^i，a_i\in\mathbb{F}表示域\mathbb{F}上文字为x的单项式
+\\f(x)=a_nx^n+a_{n-1}x^{n-1}+···+a_1x^1+a_0x^0，a_i\in\mathbb{F}
+\\为域\mathbb{F}上文字为x的多项式，简称为域\mathbb{F}上的多项式
+\\a_ix^i称为f(x)的i次项，a_i称为f(x)的i次项系数。
+\\当a_n\neq 0时，称该多项式为n次多项式，a_n称为f(x)的首项系数，
+\\多项式f(x)的次数记作deg f(x)
+\\如果多项式的各项系数均为0，则称多项式为零多项式，记作0，
+\\零多项式的次数规定为-\infty。两个多项式相等是指其对应项的系数全部相等</script><hr>
+
+<p>多项式的加法和乘法</p>
+<script type="math/tex; mode=display">
+在\mathbb{F}[x]上可以定义加法和乘法
+\\设f(x)=\sum_{i=0}^{n}a_ix^i，g(x)=\sum_{i=0}^{n}b_ix^i，n\geqslant m，
+\\令b_{m+1}=b_{m+2}=···=b_n=0，则可定义
+\\f(x)+g(x)=\sum_{i=0}^{n}(a_i+b_i)x^i，
+\\f(x)·g(x)=\sum_{j=0}^{m+n}(\sum_{i=0}^{j}a_ib_{j-1})x^j</script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
+              <a href="/tags/study-in-school/" rel="tag"><i class="fa fa-tag"></i> study in school</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/23/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%8E%9F%E7%90%86/" rel="prev" title="密码学原理">
+      <i class="fa fa-chevron-left"></i> 密码学原理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#域"><span class="nav-number">1.</span> <span class="nav-text">域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域的定义与性质"><span class="nav-number">1.1.</span> <span class="nav-text">域的定义与性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域的定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">域的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半群和独异点"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">半群和独异点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的定义"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">群的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环群"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的性质"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">群的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相约性"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">相约性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元素运算后求逆元等于元素分别求逆元后颠倒次序相运算"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">元素运算后求逆元等于元素分别求逆元后颠倒次序相运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于元素的周期"><span class="nav-number">1.1.1.8.</span> <span class="nav-text">关于元素的周期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.1.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定理"><span class="nav-number">1.1.3.</span> <span class="nav-text">定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域和扩域"><span class="nav-number">1.2.</span> <span class="nav-text">子域和扩域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">判断方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征的定义"><span class="nav-number">1.3.</span> <span class="nav-text">特征的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域的同构"><span class="nav-number">1.3.1.</span> <span class="nav-text">域的同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#素域"><span class="nav-number">1.3.2.</span> <span class="nav-text">素域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项式定理"><span class="nav-number">1.4.</span> <span class="nav-text">二项式定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征幂的二项式定理"><span class="nav-number">1.4.1.</span> <span class="nav-text">特征幂的二项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域上的多项式"><span class="nav-number">1.4.2.</span> <span class="nav-text">域上的多项式</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee Yue"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">Lee Yue</p>
+  <div class="site-description" itemprop="description">Some Blogs</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LeylaSheth" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LeylaSheth" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:YUE181105@gmail.com" title="E-Mail → mailto:YUE181105@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100045278894669" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100045278894669" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+   &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee Yue</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+  <span title="站点总字数">125k</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+  <span title="站点阅读时长">1:53</span>
+</div>
+<!-- <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div> -->
+<span class="post-meta-divider">|</span>
+<div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
