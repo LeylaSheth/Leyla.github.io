@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Flexbox and Grid 完全解构Flexbox 在任何流动的方向上(包括上下左右)都能进行良好的布局 可以以逆序 或者 以任意顺序排列布局 可以线性的沿着主轴一字排开 或者 沿着侧轴换行排列 可以弹性的在任意的容器中伸缩大小 可以使子元素们在容器主轴方向上 或者 在容器侧轴方向上 进行对齐 可以动态的 沿着主轴方向 伸缩子级的尺寸，与此同时保证父级侧轴方向上的尺寸">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexbox and Grid完全解构">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/index.html">
+<meta property="og:site_name" content="Leyla Sheth">
+<meta property="og:description" content="Flexbox and Grid 完全解构Flexbox 在任何流动的方向上(包括上下左右)都能进行良好的布局 可以以逆序 或者 以任意顺序排列布局 可以线性的沿着主轴一字排开 或者 沿着侧轴换行排列 可以弹性的在任意的容器中伸缩大小 可以使子元素们在容器主轴方向上 或者 在容器侧轴方向上 进行对齐 可以动态的 沿着主轴方向 伸缩子级的尺寸，与此同时保证父级侧轴方向上的尺寸">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174436386.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174504506.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174526477.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174548376.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175126036.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175623174.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175638542.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175901507.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180427403.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180529990.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180553649.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180648589.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180630050.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326140002254.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326141448356.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326142223994.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326142939695.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326143108303.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326143546529.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326155706902.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326160101327.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326161233880.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326162046444.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326163233184.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326163905067.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326164852806.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327214940615.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327215027208.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220532293.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220654373.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220820290.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327222124797.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327224818098.png">
+<meta property="article:published_time" content="2020-03-28T08:45:50.000Z">
+<meta property="article:modified_time" content="2020-03-28T09:21:08.046Z">
+<meta property="article:author" content="Lee Yue">
+<meta property="article:tag" content="布局">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174436386.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Flexbox and Grid完全解构 | Leyla Sheth</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Leyla Sheth" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband">
+      <a href="https://github.com/LeylaSheth" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leyla Sheth</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">BingYan Studio FED Fox</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Lee Yue">
+      <meta itemprop="description" content="Some Blogs">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leyla Sheth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flexbox and Grid完全解构
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 16:45:50 / 修改时间：17:21:08" itemprop="dateCreated datePublished" datetime="2020-03-28T16:45:50+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Flexbox-and-Grid-完全解构"><a href="#Flexbox-and-Grid-完全解构" class="headerlink" title="Flexbox and Grid 完全解构"></a>Flexbox and Grid 完全解构</h1><h2 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h2><blockquote>
+<p>在任何流动的方向上(包括上下左右)都能进行良好的布局</p>
+<p>可以以逆序 或者 以任意顺序排列布局</p>
+<p>可以线性的沿着主轴一字排开 或者 沿着侧轴换行排列</p>
+<p>可以弹性的在任意的容器中伸缩大小</p>
+<p>可以使子元素们在容器主轴方向上 或者 在容器侧轴方向上 进行对齐</p>
+<p>可以动态的 <strong>沿着主轴方向</strong> 伸缩子级的尺寸，与此同时保证父级侧轴方向上的尺寸</p>
+</blockquote>
+<a id="more"></a>
+<p>Flexbox 的布局方式主要分为两个角色</p>
+<p>一是 Flex Container（Flex 容器）</p>
+<p>二是 Flex Item（Flex 项目）</p>
+<p>demo</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box A"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box B"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box C"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box D"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box E"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Flex-Container"><a href="#Flex-Container" class="headerlink" title="Flex Container"></a>Flex Container</h3><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a><code>flex-direction</code></h4><p><code>flex-direction</code>这个属性是用来定义在它里面的 flex items 的排序方向</p>
+<p>它的预设值是 row</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>设定</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row：横向排列</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174436386.png" alt="image-20200325174436386" style="zoom: 33%;"></td>
+</tr>
+<tr>
+<td>column：竖向排列</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174504506.png" alt="image-20200325174504506" style="zoom: 33%;"></td>
+</tr>
+<tr>
+<td>row-reverse：横向翻转</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174526477.png" alt="image-20200325174526477" style="zoom:33%;"></td>
+</tr>
+<tr>
+<td>column-reverse：纵向翻转</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325174548376.png" alt="image-20200325174548376" style="zoom:33%;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="轴的概念"><a href="#轴的概念" class="headerlink" title="轴的概念"></a>轴的概念</h5><p><code>flex-direction:row</code></p>
+<p>主轴（main-axis）是 row</p>
+<p>交叉轴（cross-axis）是 column</p>
+<p><code>flex-direction:column</code></p>
+<p>主轴（main-axis）是 column</p>
+<p>交叉轴（cross-axis）是 row</p>
+<h4 id="justify-content-amp-align-items"><a href="#justify-content-amp-align-items" class="headerlink" title="justify-content&amp;align-items"></a><code>justify-content</code>&amp;<code>align-items</code></h4><p><code>justify-content</code>是设定主轴的排序方向</p>
+<p><code>align-items</code>是设定交叉轴的排序方向</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#044bd9</span>;</span><br><span class="line">  <span class="attribute">heigh</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="comment">/* 沿主轴，居中对齐 */</span></span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="comment">/* 沿交叉轴，居中对齐 */</span></span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175126036.png" alt="image-20200325175126036" style="zoom:50%;"></p>
+<p>center：居中对齐</p>
+<p>flex-start：起始方向对齐</p>
+<p>flex-end：结束方向对齐</p>
+<p>方向是由于 flex-direction 的设定决定的</p>
+<p>justify-content 的值</p>
+<p>space-between：item 之间间隔相同的间隙，首尾距离边界没有间隙</p>
+<p>space-around：item 之间间隔相同的间隙，首尾为中间的二分之一</p>
+<p>space-evenly：item 之间间隔相同的间隙，首尾也和中间一样</p>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a><code>flex-wrap</code></h4><p>flex-wrap 是指是否会分行，默认 nowrap，一行显示，压缩 items</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175623174.png" alt="image-20200325175623174" style="zoom:50%;"></p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175638542.png" alt="image-20200325175638542" style="zoom: 33%;"></p>
+<p>设置为 wrap，超出宽度就会分行显示，然后根据设定，显示出对齐效果</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325175901507.png" alt="image-20200325175901507" style="zoom: 50%;"></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a><code>flex-flow</code></h4><p>flex-flow（flex-direction+flex-wrap）</p>
+<p>flex-flow:row wrap</p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a><code>align-content</code></h4><p>这个值是当 flex-wrap 的设定值时 wrap 时，即有多于一行 flex items 时才会生效</p>
+<p>用于设定行与行之间的对齐方式</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>设定</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>center</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180427403.png" alt="image-20200325180427403" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180529990.png" alt="image-20200325180529990" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180553649.png" alt="image-20200325180553649" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>space-between</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180648589.png" alt="image-20200325180648589" style="zoom:50%;"></td>
+</tr>
+<tr>
+<td>space-around</td>
+<td><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200325180630050.png" alt="image-20200325180630050" style="zoom:50%;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Flex-Item"><a href="#Flex-Item" class="headerlink" title="Flex Item"></a>Flex Item</h3><h4 id="order"><a href="#order" class="headerlink" title="order"></a><code>order</code></h4><p>用于调整 flex item 的排序位置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.C</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f2d680</span>;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326140002254.png" alt="image-20200326140002254" style="zoom:50%;"></p>
+<p>flex item 的 order 预设值是 0</p>
+<p>排序是根据 order 由小至大排列</p>
+<p>flex item 在 HTML 的位置不代表最终显示的位置</p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a><code>align-self</code></h4><p>用于覆写 flex container 的<code>align-items</code>设定</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.C</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f2d680</span>;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">align-self</span>: flex-start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326141448356.png" alt="image-20200326141448356" style="zoom:50%;"></p>
+<p>（注：要取消 align-content 的设定）</p>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a><code>flex-basis</code></h4><p>flex-basis 是设定 flex-item 的主轴方向的大小的</p>
+<p>设置是宽度还是高度，由 flex-direction 决定</p>
+<p>并且原有的宽度或者高度设定就会失效</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326142223994.png" alt="image-20200326142223994" style="zoom:50%;"></p>
+<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a><code>flex-grow</code></h4><p>flex-grow 是指当 flex-container 主轴方向有剩余空间的时候</p>
+<p>flex-item 沿主轴方向扩大的设定，0 表示不扩大</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326142939695.png" alt="image-20200326142939695" style="zoom: 67%;"></p>
+<p><code>.box{flex-grow:1}</code>放大占满主轴方向的空间</p>
+<p>三个 item 的 grow 都为 1 的时候，1 表示占 1 份的意思，即是三个 item 各占有剩余空间 120px 中的一份</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326143108303.png" alt="image-20200326143108303" style="zoom:67%;"></p>
+<p>给 B 单独设置<code>flex-grow:3</code>则是 120px 分成五份，B 占有三份</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326143546529.png" alt="image-20200326143546529" style="zoom:67%;"></p>
+<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a><code>flex-shrink</code></h4><p>flex-shrink 与 flex-grow 相反</p>
+<p>是指当 flex item 主轴方向的大小总和，超出了 flex container 的时候</p>
+<p>flex item 沿主轴方向如何缩小的设定，flex-shrink 的预设值是 1，比如缩放的时候，nowap 的状况下，item 都是均匀的缩小，各自分担一份</p>
+<p>flex-shrink:0;代表当主轴方向空间不足时，都不能缩小对应的 flex item</p>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a><code>flex</code></h4><p>flex-grow + flex-shrink + flex-basis 组合</p>
+<p><code>flex:1 1 auto</code></p>
+<h3 id="与-BFC-的细微区别"><a href="#与-BFC-的细微区别" class="headerlink" title="与 BFC 的细微区别"></a>与 BFC 的细微区别</h3><p>但需要注意的是以下几点细节，Flexbox 布局 和 Block 布局是有细微区别的</p>
+<ul>
+<li>Flexbox 不支持 <code>::first-line</code> 和 <code>::first-letter</code> 这两种伪元素</li>
+<li><code>vertical-align</code> 对 Flexbox 中的子元素 是没有效果的</li>
+<li><code>float</code> 和 <code>clear</code> 属性对 Flexbox 中的子元素是没有效果的，也不会使子元素脱离文档流(但是对 Flexbox 是有效果的！)</li>
+<li>多栏布局<code>（column-*）</code> 在 Flexbox 中也是失效的，不能使用多栏布局在 Flexbox 排列其下的子元素</li>
+<li>Flexbox 下的子元素不会继承父级容器的宽</li>
+</ul>
+<h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><h3 id="Grid-Container"><a href="#Grid-Container" class="headerlink" title="Grid Container"></a>Grid Container</h3><p>Flexbox 属于一维（1-Dimension）的排版方式，Flexbox 容器只能控制一个方向，即水平或者竖直方向，如果需要控制另一个方向则需要在添加一层 Flexbox 容器</p>
+<p>Grid 时二维（2-Dimensions）的排版方式，Grid 容器则可以一次控制两个方向，这样就可以直接定义容器内元素的位置</p>
+<h4 id="grid-template-columns-amp-grid-template-rows"><a href="#grid-template-columns-amp-grid-template-rows" class="headerlink" title="grid-template-columns &amp; grid-template-rows"></a><code>grid-template-columns</code> &amp; <code>grid-template-rows</code></h4><p>先设置 row 再设置 column</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="comment">/*设置垂直方向划分*/</span></span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/*设置水平方向划分*/</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加入两个 item，仅设置背景，显示如图</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326155706902.png" alt="image-20200326155706902" style="zoom:50%;"></p>
+<h3 id="Grid-Item"><a href="#Grid-Item" class="headerlink" title="Grid Item"></a>Grid Item</h3><h4 id="grid-row-amp-grid-column"><a href="#grid-row-amp-grid-column" class="headerlink" title="grid-row&amp;grid-column"></a><code>grid-row</code>&amp;<code>grid-column</code></h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cell-1</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#6dd9bf</span>;</span><br><span class="line">  <span class="comment">/*grid-row: 1/3;</span></span><br><span class="line"><span class="comment">  grid-column: 1/3;*/</span></span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span>/<span class="number">1</span>/<span class="number">3</span>/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cell-2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f26e50</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">4</span>/<span class="number">6</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326160101327.png" alt="image-20200326160101327" style="zoom:50%;"></p>
+<p>根据标线设置占据的位置</p>
+<p>grid-area 是 row 和 column 的合写，设置的值的顺序</p>
+<p><code>grid-row的第一个值/grid-column的第一个值/grid-row的第二个值/grid-column的第二个值</code></p>
+<p>这个的写法，就是左上角和右下角的坐标。不过要记住这个轴</p>
+<p>span 延伸</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cell-2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f26e50</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">4</span>/<span class="number">6</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / span <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326161233880.png" alt="image-20200326161233880" style="zoom:50%;"></p>
+<h4 id="Grid-Lines"><a href="#Grid-Lines" class="headerlink" title="Grid-Lines"></a><code>Grid-Lines</code></h4><p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326162046444.png" alt="image-20200326162046444" style="zoom:50%;"></p>
+<p>这个标尺中划分出来的线，Grid 容器的分割线，就是 Grid-Lines，是可以给它们命名的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [Y1] <span class="number">100px</span> [Y2] <span class="number">100px</span> [Y3] <span class="number">100px</span> [Y4] <span class="number">100px</span> [Y5] <span class="number">100px</span> [Y6];</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: [X1] <span class="number">100px</span> [X2] <span class="number">100px</span> [X3] <span class="number">100px</span> [X4] <span class="number">100px</span> [X5] <span class="number">100px</span> [X6];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以直接用 Grid-Line 的名字来定义 item 的位置了</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cell-2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f26e50</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: Y4/Y6;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / span <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Grid-Areas"><a href="#Grid-Areas" class="headerlink" title="Grid-Areas"></a><code>Grid-Areas</code></h4><p>Grid 容器内的方格则称为 Grid-Areas</p>
+<p>CSS 提供了方法，可以直接给予一个或者多个方格命名，然后可以直接在元素中引用</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326163233184.png" alt="image-20200326163233184" style="zoom:50%;"></p>
+<p>container 中，使用<code>grid-template-areas</code>命名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [Y1] <span class="number">100px</span> [Y2] <span class="number">100px</span> [Y3] <span class="number">100px</span> [Y4] <span class="number">100px</span> [Y5] <span class="number">100px</span> [Y6];</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: [X1] <span class="number">100px</span> [X2] <span class="number">100px</span> [X3] <span class="number">100px</span> [X4] <span class="number">100px</span> [X5] <span class="number">100px</span> [X6];</span><br><span class="line">  <span class="attribute">grid-template-areas</span>:</span><br><span class="line">    <span class="string">'header header header header header'</span></span><br><span class="line">    <span class="string">'nav main main main main'</span></span><br><span class="line">    <span class="string">'nav main main main main'</span></span><br><span class="line">    <span class="string">'nav main main main main'</span></span><br><span class="line">    <span class="string">'. footer footer footer .'</span>;</span><br><span class="line">  <span class="comment">/*没有命名的位置可以用.占位*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>item 中，使用<code>grid-area</code>调用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cell-1</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#6dd9bf</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cell-2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#50a18e</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: nav;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cell-3</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f2d680</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cell-4</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f26e50</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="row-gap-amp-column-gap"><a href="#row-gap-amp-column-gap" class="headerlink" title="row-gap&amp;column-gap"></a><code>row-gap</code>&amp;<code>column-gap</code></h4><p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326163905067.png" alt="image-20200326163905067" style="zoom:50%;"></p>
+<p>添加间距，会把 container 元素撑开</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-gap</span>: 15<span class="selector-tag">px</span> 10<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="fr-amp-repeat"><a href="#fr-amp-repeat" class="headerlink" title="fr&amp;repeat()"></a><code>fr</code>&amp;<code>repeat()</code></h4><p>相对单位 fr 的使用</p>
+<p>1fr 即占一份的意思</p>
+<p>repeat()函数，第一个参数是要重复的次数，第二个参数是要重复些什么</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-rows</span>: 3<span class="selector-tag">fr</span> <span class="selector-tag">repeat</span>(4, 1<span class="selector-tag">fr</span>);</span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">repeat</span>(5, 1<span class="selector-tag">fr</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200326164852806.png" alt="image-20200326164852806" style="zoom:50%;"></p>
+<p>注：repeat()并不适用于 grid-template-areas</p>
+<h4 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a><code>justify-items</code></h4><p>沿着 column（行）轴线对齐网格项(grid items)（相反的属性是 <code>align-items</code> 沿着 row（列）轴线对齐）。此值适用于容器内的所有网格项。</p>
+<ul>
+<li><code>start</code>：将网格项对齐到其单元格的左侧起始边缘（左侧对齐）</li>
+<li><code>end</code>：将网格项对齐到其单元格的右侧结束边缘（右侧对齐）</li>
+<li><code>center</code>：将网格项对齐到其单元格的水平中间位置（水平居中对齐）</li>
+<li><code>stretch</code>：填满单元格的宽度（默认值）</li>
+</ul>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327214940615.png" alt="image-20200327214940615" style="zoom:50%;"></p>
+<p><code>place-items</code> 是设置 <code>align-items</code> 和 <code>justify-items</code> 的简写形式。</p>
+<p>第一个值设置 <code>align-items</code> 属性，第二个值设置 <code>justify-items</code> 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</p>
+<p>（Edge 不支持）</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a><code>justify-content</code></h4><p>设置网格容器内的网格的对齐方式。 此属性沿着 column（行）轴线对齐网格（相反的属性是 <code>align-content</code>，沿着 row（列）轴线对齐网格）。</p>
+<ul>
+<li><code>start</code>：将网格对齐到 网格容器(grid container) 的左侧起始边缘（左侧对齐）</li>
+<li><code>end</code>：将网格对齐到 网格容器 的右侧结束边缘（右侧对齐）</li>
+<li><code>center</code>：将网格对齐到 网格容器 的水平中间位置（水平居中对齐）</li>
+<li><code>stretch</code>：调整 网格项(grid items) 的宽度，允许该网格填充满整个 网格容器 的宽度</li>
+<li><code>space-around</code>：在每个网格项之间放置一个均匀的空间，左右两端放置一半的空间</li>
+<li><code>space-between</code>：在每个网格项之间放置一个均匀的空间，左右两端没有空间</li>
+<li><code>space-evenly</code>：在每个网格项目之间放置一个均匀的空间，左右两端放置一个均匀的空间</li>
+</ul>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327215027208.png" alt="image-20200327215027208" style="zoom: 50%;"></p>
+<h3 id="Grid-中自动排列的算法"><a href="#Grid-中自动排列的算法" class="headerlink" title="Grid 中自动排列的算法"></a>Grid 中自动排列的算法</h3><p>Grid 布局中实现流体网格列和列间距</p>
+<p>没有必要指定网格项目具体的值就可以实现网格项目的排列位置。</p>
+<p>如果显式声明网格属性，网格项目根据自动排列算法，会使网格排列变得更糟糕。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">repeat</span>(5, 1<span class="selector-tag">fr</span>);</span><br><span class="line"><span class="selector-tag">grid-template-rows</span>: <span class="selector-tag">repeat</span>(5, 1<span class="selector-tag">fr</span>);</span><br><span class="line"><span class="selector-tag">grid-gap</span>: 2<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220532293.png" alt="image-20200327220532293" style="zoom:50%;"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-7</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#e03f3f</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>: span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220654373.png" alt="image-20200327220654373" style="zoom:50%;"></p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327220820290.png" alt="image-20200327220820290" style="zoom: 75%;"></p>
+<p><code>.item-10</code>会寻找一个新的行，没有填充到 6 下面</p>
+<h4 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a><code>grid-auto-flow</code></h4><p>它的默认值是 row，横向排列</p>
+<p>设置为 column 康康，变成了竖直排列，但是还是有填充的问题</p>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327222124797.png" alt="image-20200327222124797"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-auto-flow</span>: <span class="selector-tag">column</span> <span class="selector-tag">dense</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/image-20200327224818098.png" alt="image-20200327224818098"></p>
+<ul>
+<li>如果没有明确指定网格项目位置，网格会按自动排列算法，将它最大化利用可用空间</li>
+<li>如果在当前行没有可用位置，网格会自动搜索下一行，这样会造成一定的差距，浪费可用空间</li>
+<li>可以把<code>grid-auto-flow</code>的<code>row</code>值改变<code>auto</code>，可以切换搜索顺序</li>
+<li><code>grid-auto-flow</code>还可以接受另一个关键词。默认情况下，其值是<code>sparse</code>（稀疏），但我们可以将其显式的设置为<code>dense</code>（稠密），让网格项目试图自动填补所有可用的空白空间</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://www.html.cn/archives/8510" target="_blank" rel="noopener"><a href="https://www.html.cn/archives/8510" target="_blank" rel="noopener">CSS Grid 布局完全指南(图解 Grid 详细教程)</a></a></p>
+<p><a href="https://www.html.cn/archives/8629" target="_blank" rel="noopener"><a href="https://www.html.cn/archives/8629" target="_blank" rel="noopener">CSS3 Flexbox 布局完全指南(图解 Flexbox 布局详细教程)</a></a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> 布局</a>
+              <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/26/React+Redux/" rel="prev" title="React+Redux">
+      <i class="fa fa-chevron-left"></i> React+Redux
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flexbox-and-Grid-完全解构"><span class="nav-number">1.</span> <span class="nav-text">Flexbox and Grid 完全解构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flexbox"><span class="nav-number">1.1.</span> <span class="nav-text">Flexbox</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flex-Container"><span class="nav-number">1.1.1.</span> <span class="nav-text">Flex Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-direction"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">flex-direction</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#轴的概念"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">轴的概念</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#justify-content-amp-align-items"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">justify-content&amp;align-items</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-wrap"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">flex-wrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-flow"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">flex-flow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#align-content"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">align-content</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flex-Item"><span class="nav-number">1.1.2.</span> <span class="nav-text">Flex Item</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">order</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#align-self"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">align-self</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-basis"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">flex-basis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-grow"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">flex-grow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex-shrink"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">flex-shrink</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-BFC-的细微区别"><span class="nav-number">1.1.3.</span> <span class="nav-text">与 BFC 的细微区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid"><span class="nav-number">1.2.</span> <span class="nav-text">Grid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-Container"><span class="nav-number">1.2.1.</span> <span class="nav-text">Grid Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grid-template-columns-amp-grid-template-rows"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">grid-template-columns &amp; grid-template-rows</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-Item"><span class="nav-number">1.2.2.</span> <span class="nav-text">Grid Item</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grid-row-amp-grid-column"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">grid-row&amp;grid-column</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grid-Lines"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Grid-Lines</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grid-Areas"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Grid-Areas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#row-gap-amp-column-gap"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">row-gap&amp;column-gap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fr-amp-repeat"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">fr&amp;repeat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#justify-items"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">justify-items</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#justify-content"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">justify-content</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-中自动排列的算法"><span class="nav-number">1.2.3.</span> <span class="nav-text">Grid 中自动排列的算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grid-auto-flow"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">grid-auto-flow</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee Yue"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">Lee Yue</p>
+  <div class="site-description" itemprop="description">Some Blogs</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LeylaSheth" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LeylaSheth" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:YUE181105@gmail.com" title="E-Mail → mailto:YUE181105@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100045278894669" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100045278894669" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+   &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee Yue</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+  <span title="站点总字数">138k</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+  <span title="站点阅读时长">2:06</span>
+</div>
+<!-- <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div> -->
+<span class="post-meta-divider">|</span>
+<div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
