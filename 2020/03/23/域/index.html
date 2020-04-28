@@ -48,15 +48,15 @@
   };
 </script>
 
-  <meta name="description" content="域域的定义与性质域的定义">
+  <meta name="description" content="域域的定义与性质有限域的三大基本定理 有限域元素个数都是素数的幂$p^n$ 对于任意的p和正整数n，$p^n$元的有限域都是存在的 所有元素个数相同的有限域都是同构的  域的定义">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数论">
 <meta property="og:url" content="http://yoursite.com/2020/03/23/%E5%9F%9F/index.html">
 <meta property="og:site_name" content="Leyla Sheth">
-<meta property="og:description" content="域域的定义与性质域的定义">
+<meta property="og:description" content="域域的定义与性质有限域的三大基本定理 有限域元素个数都是素数的幂$p^n$ 对于任意的p和正整数n，$p^n$元的有限域都是存在的 所有元素个数相同的有限域都是同构的  域的定义">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-23T06:00:50.000Z">
-<meta property="article:modified_time" content="2020-03-23T11:44:09.077Z">
+<meta property="article:modified_time" content="2020-04-04T13:07:45.283Z">
 <meta property="article:author" content="Lee Yue">
 <meta property="article:tag" content="数论">
 <meta property="article:tag" content="study in school">
@@ -239,10 +239,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-23 14:00:50 / 修改时间：19:44:09" itemprop="dateCreated datePublished" datetime="2020-03-23T14:00:50+08:00">2020-03-23</time>
+              <time title="创建时间：2020-03-23 14:00:50" itemprop="dateCreated datePublished" datetime="2020-03-23T14:00:50+08:00">2020-03-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-04 21:07:45" itemprop="dateModified" datetime="2020-04-04T21:07:45+08:00">2020-04-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -261,7 +267,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
+              <span>4.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -280,7 +286,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="域"><a href="#域" class="headerlink" title="域"></a>域</h1><h2 id="域的定义与性质"><a href="#域的定义与性质" class="headerlink" title="域的定义与性质"></a>域的定义与性质</h2><h3 id="域的定义"><a href="#域的定义" class="headerlink" title="域的定义"></a>域的定义</h3><a id="more"></a>
+        <h1 id="域"><a href="#域" class="headerlink" title="域"></a>域</h1><h2 id="域的定义与性质"><a href="#域的定义与性质" class="headerlink" title="域的定义与性质"></a>域的定义与性质</h2><h3 id="有限域的三大基本定理"><a href="#有限域的三大基本定理" class="headerlink" title="有限域的三大基本定理"></a>有限域的三大基本定理</h3><ol>
+<li>有限域元素个数都是素数的幂$p^n$</li>
+<li>对于任意的p和正整数n，$p^n$元的有限域都是存在的</li>
+<li>所有元素个数相同的有限域都是同构的</li>
+</ol>
+<h3 id="域的定义"><a href="#域的定义" class="headerlink" title="域的定义"></a>域的定义</h3><a id="more"></a>
+<p>域定义了四则运算的代数系统</p>
 <p>定义</p>
 <script type="math/tex; mode=display">
 设\mathbb{F}是一个非空集合，在其上定义了两种运算，分别为加法和乘法
@@ -289,11 +301,13 @@
 \\\mathbb{F}对于所规定的运算成为一个域
 \\(1)\mathbb{F}中所有元素对于加法形成一个加法交换群
 \\(2)\mathbb{F}所有非零元素(记作\mathbb{F}^*)对于乘法形成一个乘法交换群
-\\(3)对于任意a,b,c\in\mathbb{F}，a(b+c)=ab+ac（满足分配率）</script><p><strong>一个域至少有两个元素，即<em>加法群的零元</em>和<em>乘法群的单位元</em>，分别是域的零元和单位元</strong></p>
+\\(3)对于任意a,b,c\in\mathbb{F}，a(b+c)=ab+ac（满足分配律）</script><p>这样一来，一个域上有两个群，一个是加法交换群，一个是去除零元后的乘法交换群，通过分配律连接</p>
+<p>定义一个域，不仅要定义元素，还要定义运算</p>
+<p><strong>一个域至少有两个元素，即<em>加法群的零元</em>和<em>乘法群的单位元</em>，分别是域的零元和单位元</strong></p>
 <p>当域的元素个数有限时称为有限域，或者伽罗华域，否则为无限域</p>
 <script type="math/tex; mode=display">
 常见的有理数集合\mathbb{Q}，实数集合\mathbb{R}和复数集合\mathbb{C}
-\\按照定义的加法和乘法都形成域，分别称为有理数域，实数域和复数域</script><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><h4 id="半群和独异点"><a href="#半群和独异点" class="headerlink" title="半群和独异点"></a>半群和独异点</h4><p>半群的定义</p>
+\\按照定义的加法和乘法都形成域，分别称为有理数域，实数域和复数域</script><h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="半群和独异点"><a href="#半群和独异点" class="headerlink" title="半群和独异点"></a>半群和独异点</h4><p>半群的定义</p>
 <script type="math/tex; mode=display">
 设S是一个非空集合，\ast是S上的一个二元运算，
 \\若\ast是可结合的，则称代数系统<S;\ast>是半群</script><hr>
@@ -367,6 +381,8 @@
 \\群中任一元素与它的逆元具有相同的周期
 \\在有限群<G;\ast>中，每个元素均具有优先周期，且周期不超过群的阶</script><hr>
 
+
+
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>以下集合按照所定义的加法和乘法均形成域</p>
 <script type="math/tex; mode=display">
 (1)\mathbb{Q}[\sqrt{2}]=\{a+b\sqrt{2}|a,b\in\mathbb{Q}\}，加法和乘法分别为实数域\mathbb{R}上的加法和乘法
@@ -392,7 +408,7 @@
 设\mathbb{F}_0、\mathbb{F}_0^*均是域\mathbb{F}的非空子集
 \\当且仅当以下条件成立时\mathbb{F}_0是域\mathbb{F}的子域
 \\(1)任意a,b\in\mathbb{F}_0，都有-a,a+b\in\mathbb{F}_0
-\\(2)任意非零元素a,b\in\mathbb{F}_0，都有a^{-1},ab\in\mathbb{F}_0</script><h2 id="特征的定义"><a href="#特征的定义" class="headerlink" title="特征的定义"></a>特征的定义</h2><script type="math/tex; mode=display">
+\\(2)任意非零元素a,b\in\mathbb{F}_0，都有a^{-1},ab\in\mathbb{F}_0</script><h3 id="特征的定义"><a href="#特征的定义" class="headerlink" title="特征的定义"></a>特征的定义</h3><script type="math/tex; mode=display">
 设\mathbb{F}是一个域，如果存在正整数m，使得对于任意a\in\mathbb{F}均有ma=0，
 \\则在所有m中，最小的正整数称为域\mathbb{F}的特征；
 \\否则，如果不存在正整数m，使得对于任意a\in\mathbb{F}均有ma=0，
@@ -426,7 +442,50 @@
 \\设f(x)=\sum_{i=0}^{n}a_ix^i，g(x)=\sum_{i=0}^{n}b_ix^i，n\geqslant m，
 \\令b_{m+1}=b_{m+2}=···=b_n=0，则可定义
 \\f(x)+g(x)=\sum_{i=0}^{n}(a_i+b_i)x^i，
-\\f(x)·g(x)=\sum_{j=0}^{m+n}(\sum_{i=0}^{j}a_ib_{j-1})x^j</script>
+\\f(x)·g(x)=\sum_{j=0}^{m+n}(\sum_{i=0}^{j}a_ib_{j-1})x^j
+\\deg(f(x)+g(x))\leqslant  max\{degf(x),degg(x)\}
+\\ \mathbb{F}[x]按照上面定义的加法和乘法不是域，除了\mathbb{F}中的非零元素，
+\\\mathbb{F}[x]中的其他元素均没有乘法逆元</script><h3 id="多项式的二项式定理及分布域"><a href="#多项式的二项式定理及分布域" class="headerlink" title="多项式的二项式定理及分布域"></a>多项式的二项式定理及分布域</h3><script type="math/tex; mode=display">
+f(x),g(x)是特征为p的域上的多项式，那么
+\\(f(x)\pm g(x))^{p^n}=f(x)^{p^n}\pm g(x)^{p^n}
+\\\mathbb{F}(x)=\{\frac{f(x)}{g(x)}|f(x),g(x)\in\mathbb{F}[x],g(x)\neq0\}按照以下规则形成一个域，
+\\其中\frac{f(x)}{g(x)}+\frac{s(x)}{t(x)}=\frac{f(x)t(x)+s(x)g(x)}{g(x)t(x)},\frac{f(x)}{g(x)}\frac{s(x)}{t(x)}=\frac{f(x)s(x)}{g(x)t(x)}，
+\\且\frac{f(x)}{g(x)}=\frac{f_1(x)}{g_1(x)}当且仅当f(x)g_1(x)=g(x)f_1(x)
+\\特别的，当\mathbb{F}是特征为p的有限域时，\mathbb{F}(x)是特征为p的无限域</script><h2 id="多项式的辗转相除法"><a href="#多项式的辗转相除法" class="headerlink" title="多项式的辗转相除法"></a>多项式的辗转相除法</h2><h3 id="带余除法算式"><a href="#带余除法算式" class="headerlink" title="带余除法算式"></a>带余除法算式</h3><script type="math/tex; mode=display">
+定理：设f(x),g(x)为域\mathbb{F}上的两个多项式，g(x)\neq0，则存在唯一一对多项式q(x),r(x),使得
+\\f(x)=q(x)g(x)+r(x), degr(x)<degg(x)
+\\r(x)称为f(x)被g(x)除所得的余式，记作(f(x))_{g(x)}=r(x)</script><hr>
+
+<script type="math/tex; mode=display">
+定理：设f_1(x),f_2(x),g(x)为域\mathbb{F}上的多项式，g(x)\neq0，则
+\\(f_1(x)+f_2(x))_{g(x)}=(f_1(x))_{g(x)}+(f_2(x))_{g(x)}
+\\(f_1(x)f_2(x))_{g(x)}=((f_1(x))_{g(x)}(f_2(x))_{g(x)})_{g(x)}</script><hr>
+
+
+
+<h3 id="因式与倍式"><a href="#因式与倍式" class="headerlink" title="因式与倍式"></a>因式与倍式</h3><script type="math/tex; mode=display">
+设f(x),g(x)为域\mathbb{F}上的两个多项式，g(x)\neq0，其带余除法算式如(1),
+\\当r(x)=0时，称f(x)能被g(x)整除，或者g(x)能整除f(x),记作g(x)|f(x)
+\\否则称g(x)不能整除f(x),记作g(x)|f(x)
+\\若g(x)|f(x)，f(x)称为g(x)的倍式，而g(x)称作f(x)的因式
+\\由定义，0是任意非零多项式的倍式，而域\mathbb{F}中非零元素为任意多项式的因式</script><hr>
+
+<script type="math/tex; mode=display">
+设f(x)为域\mathbb{F}上的多项式，如果f(x)的因式只有c，cf(x)，其中c\in \mathbb{F}^*，
+\\则f(x)称为域\mathbb{F}上的不可约多项式，否则称为可约多项式</script><hr>
+
+<script type="math/tex; mode=display">
+定理：域\mathbb{F}上的多项式f(x)是可约多项式，当且仅当存在两个域\mathbb{F}上的多项式f_1(x),f_2(x)
+\\degf_1(x)<degf(x),degf_2(x)<degf(x)，使得f(x)=f_1(x)f_2(x)</script><hr>
+
+<script type="math/tex; mode=display">
+定理：域\mathbb{F}上的多项式g(x)|f_1(x),g(x)|f_2(x)，那么对于\mathbb{F}上的任意多项式s(x),t(x),
+\\g(x)|s(x)f_1(x)+t(x)f_2(x)</script><h3 id="辗转相除法"><a href="#辗转相除法" class="headerlink" title="辗转相除法"></a>辗转相除法</h3><script type="math/tex; mode=display">
+设f(x),g(x)为域\mathbb{F}上的两个多项式，若域\mathbb{F}上的多项式d(x)\neq0,
+\\同时满足d(x)|f(x),d(x)|g(x)，则称d(x)为f(x)和g(x)的公因式。
+\\当f(x)和g(x)不全为0时，在f(x)和g(x)的所有公因式中，一定有一个次数最高，首项系数为1的多项式，
+\\该多项式称为f(x)和g(x)的最高公因式，记作(f(x),g(x))或者gcd(f(x),g(x))
+\\当(f(x),g(x))=1时，f(x)和g(x)互素</script>
     </div>
 
     
@@ -450,8 +509,8 @@
       <i class="fa fa-chevron-left"></i> 密码学原理
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/26/React+Redux/" rel="next" title="React+Redux">
-      React+Redux <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/28/Flexbox-and-Grid%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%84/" rel="next" title="Flexbox and Grid完全解构">
+      Flexbox and Grid完全解构 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -512,7 +571,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#域"><span class="nav-number">1.</span> <span class="nav-text">域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域的定义与性质"><span class="nav-number">1.1.</span> <span class="nav-text">域的定义与性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域的定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">域的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半群和独异点"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">半群和独异点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的定义"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">群的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环群"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的性质"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">群的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相约性"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">相约性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元素运算后求逆元等于元素分别求逆元后颠倒次序相运算"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">元素运算后求逆元等于元素分别求逆元后颠倒次序相运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于元素的周期"><span class="nav-number">1.1.1.8.</span> <span class="nav-text">关于元素的周期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.1.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定理"><span class="nav-number">1.1.3.</span> <span class="nav-text">定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域和扩域"><span class="nav-number">1.2.</span> <span class="nav-text">子域和扩域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">判断方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征的定义"><span class="nav-number">1.3.</span> <span class="nav-text">特征的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域的同构"><span class="nav-number">1.3.1.</span> <span class="nav-text">域的同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#素域"><span class="nav-number">1.3.2.</span> <span class="nav-text">素域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项式定理"><span class="nav-number">1.4.</span> <span class="nav-text">二项式定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征幂的二项式定理"><span class="nav-number">1.4.1.</span> <span class="nav-text">特征幂的二项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域上的多项式"><span class="nav-number">1.4.2.</span> <span class="nav-text">域上的多项式</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#域"><span class="nav-number">1.</span> <span class="nav-text">域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域的定义与性质"><span class="nav-number">1.1.</span> <span class="nav-text">域的定义与性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有限域的三大基本定理"><span class="nav-number">1.1.1.</span> <span class="nav-text">有限域的三大基本定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域的定义"><span class="nav-number">1.1.2.</span> <span class="nav-text">域的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">1.1.3.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#半群和独异点"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">半群和独异点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的定义"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">群的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环群"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#群的性质"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">群的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相约性"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">相约性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元素运算后求逆元等于元素分别求逆元后颠倒次序相运算"><span class="nav-number">1.1.3.6.</span> <span class="nav-text">元素运算后求逆元等于元素分别求逆元后颠倒次序相运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于元素的周期"><span class="nav-number">1.1.3.7.</span> <span class="nav-text">关于元素的周期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.1.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定理"><span class="nav-number">1.1.5.</span> <span class="nav-text">定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域和扩域"><span class="nav-number">1.2.</span> <span class="nav-text">子域和扩域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">判断方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征的定义"><span class="nav-number">1.2.3.</span> <span class="nav-text">特征的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域的同构"><span class="nav-number">1.2.4.</span> <span class="nav-text">域的同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#素域"><span class="nav-number">1.2.5.</span> <span class="nav-text">素域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项式定理"><span class="nav-number">1.3.</span> <span class="nav-text">二项式定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征幂的二项式定理"><span class="nav-number">1.3.1.</span> <span class="nav-text">特征幂的二项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域上的多项式"><span class="nav-number">1.3.2.</span> <span class="nav-text">域上的多项式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式的二项式定理及分布域"><span class="nav-number">1.3.3.</span> <span class="nav-text">多项式的二项式定理及分布域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式的辗转相除法"><span class="nav-number">1.4.</span> <span class="nav-text">多项式的辗转相除法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#带余除法算式"><span class="nav-number">1.4.1.</span> <span class="nav-text">带余除法算式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因式与倍式"><span class="nav-number">1.4.2.</span> <span class="nav-text">因式与倍式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辗转相除法"><span class="nav-number">1.4.3.</span> <span class="nav-text">辗转相除法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -528,7 +587,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -541,7 +600,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -588,12 +647,12 @@
   <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-  <span title="站点总字数">138k</span>
+  <span title="站点总字数">161k</span>
   <span class="post-meta-divider">|</span>
   <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-  <span title="站点阅读时长">2:06</span>
+  <span title="站点阅读时长">2:26</span>
 </div>
 <!-- <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div> -->
