@@ -313,7 +313,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 进阶系列</title>
+    <title>任务管理机制</title>
     <url>/2020/04/28/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h1 id="任务管理"><a href="#任务管理" class="headerlink" title="任务管理"></a>任务管理</h1><p>JavaScript 是单线程</p>
 <p>为了协调事件、用户交互、脚本、UI 渲染和网络处理等行为，防止主线程的不阻塞，事件循环(Event Loop)的方案</p>
