@@ -180,12 +180,46 @@
       </tags>
   </entry>
   <entry>
+    <title>React知识点</title>
+    <url>/2020/04/28/React%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="React-知识点"><a href="#React-知识点" class="headerlink" title="React 知识点"></a>React 知识点</h1><h2 id="ref-和-React-js-中的-DOM-操作"><a href="#ref-和-React-js-中的-DOM-操作" class="headerlink" title="ref 和 React.js 中的 DOM 操作"></a>ref 和 React.js 中的 DOM 操作</h2><p>在 React 中，可以直接通过<code>setState</code>的方式重新渲染组件，渲染时可以把新的<code>props</code>传递给子组件，从而达到页面更新的效果</p>
+<p><code>ref</code>属性可以帮助获取已经挂载的元素的 DOM 节点</p>
+<a id="more"></a>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class AutoFocusInput extends Component &#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.input.focus()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;input ref&#x3D;&#123;(input)&#x3D;&gt;this.input&#x3D;input&#125; &#x2F;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里给<code>input</code>元素加了一个<code>ref</code>属性，这个属性值时一个函数，当<code>input</code>元素在页面上挂载完成以后，React 会调用这个函数，并且把这个挂载以后的 DOM 节点传给这个函数。在函数中把 DOM 元素设置为组件实例的一个属性，这样就可以通过<code>this.input</code>获取这个 DOM 元素</p>
+<p>就可以在<code>componentDidMount()</code>中使用这个 DOM 元素，并调用它的 API</p>
+<p>可以给任意代表 HTML 元素标签加上<code>ref</code>从而获取到它 DOM 元素然后调用 DOM 的 API</p>
+<p>原则： <strong>能不用<code>ref</code>就不用。。。</strong></p>
+<h2 id="PropTypes和组件参数验证"><a href="#PropTypes和组件参数验证" class="headerlink" title="PropTypes和组件参数验证"></a><code>PropTypes</code>和组件参数验证</h2><p>用于给组件的配置参数加上类型验证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install --save prop-types</span><br></pre></td></tr></table></figure>
+<p>用于帮助验证<code>props</code>的参数类型</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;</span><br><span class="line">import PropTypes from &#39;prop-types&#39;</span><br><span class="line"></span><br><span class="line">class Comment extends Component &#123;</span><br><span class="line">  static propTypes &#x3D; &#123;</span><br><span class="line">    comment:PropTypes.object.isRequest</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	render()&#123;</span><br><span class="line">    const &#123;comment&#125; &#x3D; this.props</span><br><span class="line">    return (</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">      	&lt;span&gt;&#123;comment.username&#125;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;p&gt;&#123;comment.content&#125;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可选参数我们可以通过配置 <code>defaultProps</code>，让它在不传入的时候有默认值。但是我们这里并没有配置 <code>defaultProps</code>，所以如果直接用而不传入任何参数的话，<code>comment</code> 就会是 <code>undefined</code>，<code>comment.username</code> 会导致程序报错</p>
+<p>可以通过 <code>isRequired</code> 关键字来强制组件某个参数必须传入</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">array</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">bool</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>func</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>number</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>object</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">string</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>node</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>element</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h2><h3 id="什么高阶组件"><a href="#什么高阶组件" class="headerlink" title="什么高阶组件"></a>什么高阶组件</h3><p><strong>高阶组件就是一个函数，传给它一个组件，它返回一个新的组件</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">export default (WrappedComponent, name) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F;可以实现更多自定义逻辑</span><br><span class="line">  class NewComponent extends Component &#123;</span><br><span class="line">    constructor () &#123;</span><br><span class="line">      super()</span><br><span class="line">      this.state &#x3D; &#123; data: null &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillMount () &#123;</span><br><span class="line">      ajax.get(&#39;&#x2F;data&#x2F;&#39; + name, (data) &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123; data &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render () &#123;</span><br><span class="line">      return &lt;WrappedComponent data&#x3D;&#123;this.state.data&#125; &#x2F;&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return NewComponent</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import wrapWithLoadData from &#39;.&#x2F;wrapWithLoadData&#39;</span><br><span class="line">&#x2F;&#x2F;我觉得可以用来设置token</span><br><span class="line">class InputWithUserName extends Component &#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return &lt;input value &#x3D; &#123;this.props.data&#125; &#x2F;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputWithUserName &#x3D; wrapWithLoadData(InputWithUserName,&quot;username&quot;)</span><br><span class="line">export default InputWithUserName</span><br></pre></td></tr></table></figure>
+<p>假如 <code>InputWithUserName</code> 的功能需求是挂载的时候从 LocalStorage 里面加载 <code>username</code> 字段作为 input 的<code>value</code>值</p>
+]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+        <tag>工程</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Taro基础</title>
     <url>/2020/04/28/Taro/</url>
     <content><![CDATA[<h1 id="Taro"><a href="#Taro" class="headerlink" title="Taro"></a>Taro</h1><h2 id="开发前的准备"><a href="#开发前的准备" class="headerlink" title="开发前的准备"></a>开发前的准备</h2><p>全局安装 Taro <code>npm install -g @tarojs/cli</code></p>
 <p>使用命令创建模板项目 <code>taro init my-app</code></p>
 <p>天坑 <code>npm install</code> 一波依赖</p>
 <p>开发期启动命令</p>
+<a id="more"></a>
 <ul>
 <li>Web H5 —— <code>npm run dev:h5</code></li>
 <li>微信小程序 —— <code>npm run dev:weapp</code></li>
@@ -194,7 +228,6 @@
 <li>ReactNative —— <code>npm run dev:rn</code></li>
 </ul>
 <p>使用<code>npm run dev:weapp</code>初始化一下小程序，然后把 dist 文件夹导入微信开发者工具</p>
-<p><img src="/2020/04/28/Taro/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20200413105453772.png" alt="image-20200413105453772"></p>
 <p>通过在 app.js 项目入口文件中配置路由来确定页面</p>
 <h2 id="生命周期-amp-state"><a href="#生命周期-amp-state" class="headerlink" title="生命周期 &amp; state"></a>生命周期 &amp; state</h2><blockquote>
 <p>状态更新一定是异步的</p>
@@ -240,39 +273,6 @@
         <tag>ES6</tag>
         <tag>工程</tag>
         <tag>Taro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React知识点</title>
-    <url>/2020/04/28/React%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<h1 id="React-知识点"><a href="#React-知识点" class="headerlink" title="React 知识点"></a>React 知识点</h1><h2 id="ref-和-React-js-中的-DOM-操作"><a href="#ref-和-React-js-中的-DOM-操作" class="headerlink" title="ref 和 React.js 中的 DOM 操作"></a>ref 和 React.js 中的 DOM 操作</h2><p>在 React 中，可以直接通过<code>setState</code>的方式重新渲染组件，渲染时可以把新的<code>props</code>传递给子组件，从而达到页面更新的效果</p>
-<p><code>ref</code>属性可以帮助获取已经挂载的元素的 DOM 节点</p>
-<a id="more"></a>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class AutoFocusInput extends Component &#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.input.focus()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;input ref&#x3D;&#123;(input)&#x3D;&gt;this.input&#x3D;input&#125; &#x2F;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里给<code>input</code>元素加了一个<code>ref</code>属性，这个属性值时一个函数，当<code>input</code>元素在页面上挂载完成以后，React 会调用这个函数，并且把这个挂载以后的 DOM 节点传给这个函数。在函数中把 DOM 元素设置为组件实例的一个属性，这样就可以通过<code>this.input</code>获取这个 DOM 元素</p>
-<p>就可以在<code>componentDidMount()</code>中使用这个 DOM 元素，并调用它的 API</p>
-<p>可以给任意代表 HTML 元素标签加上<code>ref</code>从而获取到它 DOM 元素然后调用 DOM 的 API</p>
-<p>原则： <strong>能不用<code>ref</code>就不用。。。</strong></p>
-<h2 id="PropTypes和组件参数验证"><a href="#PropTypes和组件参数验证" class="headerlink" title="PropTypes和组件参数验证"></a><code>PropTypes</code>和组件参数验证</h2><p>用于给组件的配置参数加上类型验证</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install --save prop-types</span><br></pre></td></tr></table></figure>
-<p>用于帮助验证<code>props</code>的参数类型</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;</span><br><span class="line">import PropTypes from &#39;prop-types&#39;</span><br><span class="line"></span><br><span class="line">class Comment extends Component &#123;</span><br><span class="line">  static propTypes &#x3D; &#123;</span><br><span class="line">    comment:PropTypes.object.isRequest</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	render()&#123;</span><br><span class="line">    const &#123;comment&#125; &#x3D; this.props</span><br><span class="line">    return (</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">      	&lt;span&gt;&#123;comment.username&#125;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;p&gt;&#123;comment.content&#125;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可选参数我们可以通过配置 <code>defaultProps</code>，让它在不传入的时候有默认值。但是我们这里并没有配置 <code>defaultProps</code>，所以如果直接用而不传入任何参数的话，<code>comment</code> 就会是 <code>undefined</code>，<code>comment.username</code> 会导致程序报错</p>
-<p>可以通过 <code>isRequired</code> 关键字来强制组件某个参数必须传入</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">array</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">bool</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>func</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>number</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>object</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span><span class="built_in">string</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>node</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">PropTypes</span>.</span></span>element</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h2><h3 id="什么高阶组件"><a href="#什么高阶组件" class="headerlink" title="什么高阶组件"></a>什么高阶组件</h3><p><strong>高阶组件就是一个函数，传给它一个组件，它返回一个新的组件</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">export default (WrappedComponent, name) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F;可以实现更多自定义逻辑</span><br><span class="line">  class NewComponent extends Component &#123;</span><br><span class="line">    constructor () &#123;</span><br><span class="line">      super()</span><br><span class="line">      this.state &#x3D; &#123; data: null &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillMount () &#123;</span><br><span class="line">      ajax.get(&#39;&#x2F;data&#x2F;&#39; + name, (data) &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123; data &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render () &#123;</span><br><span class="line">      return &lt;WrappedComponent data&#x3D;&#123;this.state.data&#125; &#x2F;&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return NewComponent</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import wrapWithLoadData from &#39;.&#x2F;wrapWithLoadData&#39;</span><br><span class="line">&#x2F;&#x2F;我觉得可以用来设置token</span><br><span class="line">class InputWithUserName extends Component &#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return &lt;input value &#x3D; &#123;this.props.data&#125; &#x2F;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputWithUserName &#x3D; wrapWithLoadData(InputWithUserName,&quot;username&quot;)</span><br><span class="line">export default InputWithUserName</span><br></pre></td></tr></table></figure>
-<p>假如 <code>InputWithUserName</code> 的功能需求是挂载的时候从 LocalStorage 里面加载 <code>username</code> 字段作为 input 的<code>value</code>值</p>
-]]></content>
-      <categories>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-        <tag>工程</tag>
-        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -363,14 +363,15 @@
   <entry>
     <title>git流程</title>
     <url>/2020/04/15/git%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="Git流程"><a href="#Git流程" class="headerlink" title="Git流程"></a>Git流程</h1><h2 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h2><h3 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h3><ol>
-<li>将尚未进行版本控制的本地目录转换成Git仓库</li>
-<li>从其他服务器clone一个已经存在的Git仓库</li>
+    <content><![CDATA[<h1 id="Git-流程"><a href="#Git-流程" class="headerlink" title="Git 流程"></a>Git 流程</h1><h2 id="Git-基础"><a href="#Git-基础" class="headerlink" title="Git 基础"></a>Git 基础</h2><h3 id="获取-Git-仓库"><a href="#获取-Git-仓库" class="headerlink" title="获取 Git 仓库"></a>获取 Git 仓库</h3><ol>
+<li>将尚未进行版本控制的本地目录转换成 Git 仓库</li>
+<li>从其他服务器 clone 一个已经存在的 Git 仓库</li>
 </ol>
 <h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /my-project</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>将会创建一个名为<code>.git</code>的子目录，用来保存版本信息。这个子目录包含初始化<code>Git</code>仓库的所有必须文件</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls .git</span><br><span class="line"></span><br><span class="line">branches/</span><br><span class="line">config</span><br><span class="line">description</span><br><span class="line">HEAD</span><br><span class="line">hooks/</span><br><span class="line">info/</span><br><span class="line">objects/</span><br><span class="line">refs</span><br></pre></td></tr></table></figure>
-<h4 id="进行版本控制"><a href="#进行版本控制" class="headerlink" title="进行版本控制"></a>进行版本控制</h4><h4 id="clone现有仓库"><a href="#clone现有仓库" class="headerlink" title="clone现有仓库"></a>clone现有仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt;</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/libgit2/libgit2</span><br></pre></td></tr></table></figure>
+<h4 id="进行版本控制"><a href="#进行版本控制" class="headerlink" title="进行版本控制"></a>进行版本控制</h4><h4 id="clone-现有仓库"><a href="#clone-现有仓库" class="headerlink" title="clone 现有仓库"></a>clone 现有仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt;</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/libgit2/libgit2</span><br></pre></td></tr></table></figure>
 <p>自定义本地仓库的名字</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; name</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/libgit2/libgit2 mylibgit</span><br></pre></td></tr></table></figure>
 <h4 id="git-add-命令"><a href="#git-add-命令" class="headerlink" title="git add 命令"></a>git add 命令</h4><p>将文件添加到仓库</p>
@@ -378,13 +379,13 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add README.md</span><br></pre></td></tr></table></figure>
 <h4 id="git-commit-命令"><a href="#git-commit-命令" class="headerlink" title="git commit 命令"></a>git commit 命令</h4><p>提交目录结构和说明，生成快照</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m &lt;message&gt;</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure>
-<h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h4><p>git status命令可以时刻掌握仓库当前的状态</p>
-<h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff \"></a>git diff \<file></file></h4><p>查看difference，查看修改内容</p>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>git log命令查看日志。显示从最近到最远的提交日志</p>
+<h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h4><p>git status 命令可以时刻掌握仓库当前的状态</p>
+<h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff \"></a>git diff \<file\></file\></h4><p>查看 difference，查看修改内容</p>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>git log 命令查看日志。显示从最近到最远的提交日志</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br></pre></td></tr></table></figure>
-<p>打印出commit id（版本号）</p>
-<h4 id="回退过去"><a href="#回退过去" class="headerlink" title="回退过去"></a>回退过去</h4><p>在Git中，用<code>HEAD</code>表示当前版本，最新版本</p>
-<p>上一个版本就是<code>HEAD^</code>，上上个就是<code>HEAD^^</code>，上n个版本就是<code>HEAD~n</code></p>
+<p>打印出 commit id（版本号）</p>
+<h4 id="回退过去"><a href="#回退过去" class="headerlink" title="回退过去"></a>回退过去</h4><p>在 Git 中，用<code>HEAD</code>表示当前版本，最新版本</p>
+<p>上一个版本就是<code>HEAD^</code>，上上个就是<code>HEAD^^</code>，上 n 个版本就是<code>HEAD~n</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
 <h4 id="回退未来"><a href="#回退未来" class="headerlink" title="回退未来"></a>回退未来</h4><p>找到版本号</p>
 <p>查看提交历史，确定回退版本</p>
@@ -394,8 +395,8 @@
 <p>查看命令历史</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
 <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><h4 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a>工作区（Working Directory）</h4><p>本地电脑的工程文件</p>
-<h4 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a>版本库（Repository）</h4><p>工作区的隐藏目录<code>.git</code>不算工作区，而是Git版本库</p>
-<p>其中很重要的就是 <strong>stage</strong>暂存区，还有Git自动创建的第一个分支<code>master</code>，<code>master</code>的一个指针叫<code>HEAD</code></p>
+<h4 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a>版本库（Repository）</h4><p>工作区的隐藏目录<code>.git</code>不算工作区，而是 Git 版本库</p>
+<p>其中很重要的就是 <strong>stage</strong>暂存区，还有 Git 自动创建的第一个分支<code>master</code>，<code>master</code>的一个指针叫<code>HEAD</code></p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/repository.png" alt="img"></p>
 <ol>
 <li><code>git add</code>添加文件，实际上是把文件修改添加到暂存区</li>
@@ -410,31 +411,31 @@
 <li>文件已经添加到暂存区后，又作了修改，现在，撤销修改后就回到添加到暂存区后的状态</li>
 </ol>
 <p><code>--</code>指定文件，没有<code>--</code>就是切换分支的命令</p>
-<p>如果add到了暂存区，在commit之前</p>
+<p>如果 add 到了暂存区，在 commit 之前</p>
 <p><code>git status</code>查看一下，修改只是添加到了暂存区没有提交</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">	modified:   readme.txt</span><br></pre></td></tr></table></figure>
 <p><code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉，重新放回工作区</p>
-<p>场景1：改乱了工作区某个文件的内容，想要直接丢弃工作区的修改时，使用命令<code>git checkout -- file</code></p>
-<p>场景2：不但改乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改，分为两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就会回到了场景1</p>
-<p>场景3：已经提交了不合适的修改到版本库时，撤销修改，版本回退</p>
+<p>场景 1：改乱了工作区某个文件的内容，想要直接丢弃工作区的修改时，使用命令<code>git checkout -- file</code></p>
+<p>场景 2：不但改乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改，分为两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就会回到了场景 1</p>
+<p>场景 3：已经提交了不合适的修改到版本库时，撤销修改，版本回退</p>
 <h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>从版本库中删除文件<code>git rm</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm <span class="string">'README.md'</span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"remove README.md"</span></span><br><span class="line">[master d46f35e] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
 <p>如果误删，版本库里还有，可以恢复</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- README.md</span><br></pre></td></tr></table></figure>
-<p>git rm file并且git commit并不是删除了版本库里的某个版本号，而是对工作目录下的删除操作进行了一个记录，会在仓库里生成一个新的版本号，在该版本下没有该文件。但是可以用git reset —hard commit_id进行版本回退，回退到有这个文件的版本号。而git checkout commit_id file命令是从含有该文件的旧版本号里把该文件拿出来，放到现版本里，版本号不改变。</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h3><p>每次提交，Git都把提交串成了一条时间线，这条时间线就是一个分支</p>
+<p>git rm file 并且 git commit 并不是删除了版本库里的某个版本号，而是对工作目录下的删除操作进行了一个记录，会在仓库里生成一个新的版本号，在该版本下没有该文件。但是可以用 git reset —hard commit_id 进行版本回退，回退到有这个文件的版本号。而 git checkout commit_id file 命令是从含有该文件的旧版本号里把该文件拿出来，放到现版本里，版本号不改变。</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h3><p>每次提交，Git 都把提交串成了一条时间线，这条时间线就是一个分支</p>
 <p>主分支，即<code>master</code>分支，<code>HEAD</code>不是指向提交，而是指向<code>master</code>，<code>master</code>才是指向提交的。</p>
 <p><code>HEAD</code>指向的就是当前分支</p>
-<p><code>master</code>分支是一条线，Git用<code>master</code>指向最新的提交，再用<code>HEAD</code>指向<code>master</code>，就能确定当前分支，以及当前分支的提交点</p>
+<p><code>master</code>分支是一条线，Git 用<code>master</code>指向最新的提交，再用<code>HEAD</code>指向<code>master</code>，就能确定当前分支，以及当前分支的提交点</p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/master.png" alt="img"></p>
 <p>每次提交，<code>master</code>分支都会向前移动一步，不断提交，<code>master</code>分支越来越长</p>
-<p>创建新的分支例如<code>dev</code>时，Git新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交，再把<code>HEAD</code>指向<code>dev</code>，就表示当前分支在<code>dev</code>上</p>
+<p>创建新的分支例如<code>dev</code>时，Git 新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交，再把<code>HEAD</code>指向<code>dev</code>，就表示当前分支在<code>dev</code>上</p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/dev.png" alt="img"></p>
 <p>然后，对工作区的修改和提交就是针对<code>dev</code>分支，新提交一次后，<code>dev</code>指针往前移动一步，而<code>master</code>指针不变</p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/head.png" alt="img"></p>
 <p>如果在<code>dev</code>上的工作完成了，就可以把<code>dev</code>合并到<code>master</code>。合并最简单的办法，就是直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并</p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/toget.png" alt="img"></p>
-<p>Git合并分支很快，改改指针，工作区内容也不变</p>
+<p>Git 合并分支很快，改改指针，工作区内容也不变</p>
 <p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针删除，删除后，就剩下一条<code>master</code>分支</p>
 <p><img src="/2020/04/15/git%E6%B5%81%E7%A8%8B/devn.png" alt="img"></p>
 <h4 id="创建切换分支"><a href="#创建切换分支" class="headerlink" title="创建切换分支"></a>创建切换分支</h4><p>创建<code>dev</code>分支，然后切换到<code>dev</code>分支</p>
@@ -454,7 +455,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure>
 <h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>切换分支使用<code>git checkout &lt;branch&gt;</code></p>
 <p>撤销修改则是<code>git checkout -- &lt;file&gt;</code></p>
-<p>最新版本的Git提供了新的<code>git switch</code>命令来切换分支</p>
+<p>最新版本的 Git 提供了新的<code>git switch</code>命令来切换分支</p>
 <p>创建并切换到新的<code>dev</code>分支</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git switch -c dev</span><br></pre></td></tr></table></figure>
 <p>直接切换到已有的<code>master</code>分支</p>
@@ -467,11 +468,11 @@
 <li>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></li>
 <li>删除分支：<code>git branch -d &lt;name&gt;</code></li>
 </ul>
-<h2 id="git忽略某个目录或文件不上传"><a href="#git忽略某个目录或文件不上传" class="headerlink" title="git忽略某个目录或文件不上传"></a>git忽略某个目录或文件不上传</h2><p>在目录下创建一个<code>.gitignore</code>文件</p>
+<h2 id="git-忽略某个目录或文件不上传"><a href="#git-忽略某个目录或文件不上传" class="headerlink" title="git 忽略某个目录或文件不上传"></a>git 忽略某个目录或文件不上传</h2><p>在目录下创建一个<code>.gitignore</code>文件</p>
 <p>写入<code>node_modules</code>，保存</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">target          <span class="string">//</span>忽略这个target目录</span><br><span class="line">angular.json    <span class="string">//</span>忽略这个angular.json文件</span><br><span class="line">log/*           <span class="string">//</span>忽略log下的所有文件</span><br><span class="line">css/*<span class="string">.css</span>       <span class="string">//</span>忽略css目录下的<span class="string">.css</span>文件</span><br></pre></td></tr></table></figure>
-<p>然后在执行git status查看，就没有node_modules目录了</p>
-<p>然后执行git add .，就没有node_modules</p>
+<p>然后在执行 git status 查看，就没有 node_modules 目录了</p>
+<p>然后执行 git add .，就没有 node_modules</p>
 ]]></content>
   </entry>
   <entry>
