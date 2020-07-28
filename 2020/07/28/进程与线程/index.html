@@ -48,58 +48,59 @@
   };
 </script>
 
-  <meta name="description" content="进程与线程进程进程的定义 在计算机发展史中，“进程”是为了解决什么问题而被引入的？  程序：就是一个指令序列 早期的计算机只支持单道程序，CPU只为这个程序服务，内存当中也只会存放这个程序相关的信息  之后引入了多道程序技术  定义程序段、数据段、PCB三部分组成了进程实体（进程映像），一般情况下，把进程实体简称为进程 例如，创建进程，实质上是创建进程实体中的PCB，PCB是进程存在的唯一标志 从">
+  <meta name="description" content="进程与线程进程进程的定义 在计算机发展史中，“进程”是为了解决什么问题而被引入的？  程序：就是一个指令序列 早期的计算机只支持单道程序，CPU 只为这个程序服务，内存当中也只会存放这个程序相关的信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程与线程">
-<meta property="og:url" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Leyla Sheth">
-<meta property="og:description" content="进程与线程进程进程的定义 在计算机发展史中，“进程”是为了解决什么问题而被引入的？  程序：就是一个指令序列 早期的计算机只支持单道程序，CPU只为这个程序服务，内存当中也只会存放这个程序相关的信息  之后引入了多道程序技术  定义程序段、数据段、PCB三部分组成了进程实体（进程映像），一般情况下，把进程实体简称为进程 例如，创建进程，实质上是创建进程实体中的PCB，PCB是进程存在的唯一标志 从">
+<meta property="og:description" content="进程与线程进程进程的定义 在计算机发展史中，“进程”是为了解决什么问题而被引入的？  程序：就是一个指令序列 早期的计算机只支持单道程序，CPU 只为这个程序服务，内存当中也只会存放这个程序相关的信息">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/before.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/after.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/more.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/sum.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/pcb.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/toge.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/front.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/chat.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/figure.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/sumup.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/turn.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/base.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/two.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/translate.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/jincheng.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/control.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/howto.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/action.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu1.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu2.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu3.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu4.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/msg.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/share.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/hts.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/pipe.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/msgc.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/summ.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/xianc.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/many.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/change.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/per.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/user.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/machine.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/nm.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/much.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/one.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/mn.png">
-<meta property="article:published_time" content="2020-04-29T02:17:19.653Z">
-<meta property="article:modified_time" content="2020-04-29T07:06:15.947Z">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/before.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/after.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/more.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/sum.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/pcb.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/toge.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/front.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/chat.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/figure.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/sumup.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/turn.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/base.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/two.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/translate.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/jincheng.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/control.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/howto.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/action.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu3.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/yu4.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/msg.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/share.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/hts.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/pipe.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/msgc.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/summ.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/xianc.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/many.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/change.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/per.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/user.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/machine.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/nm.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/much.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/one.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/mn.png">
+<meta property="article:published_time" content="2020-07-28T08:00:50.000Z">
+<meta property="article:modified_time" content="2020-07-28T14:39:49.591Z">
 <meta property="article:author" content="Lee Yue">
+<meta property="article:tag" content="study in school">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source/_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/before.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog/source_posts/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/before.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+<link rel="canonical" href="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -254,7 +255,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -278,7 +279,18 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-29 10:17:19 / 修改时间：15:06:15" itemprop="dateCreated datePublished" datetime="2020-04-29T10:17:19+08:00">2020-04-29</time>
+              <time title="创建时间：2020-07-28 16:00:50 / 修改时间：22:39:49" itemprop="dateCreated datePublished" datetime="2020-07-28T16:00:50+08:00">2020-07-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study-in-school/" itemprop="url" rel="index">
+                    <span itemprop="name">study in school</span>
+                  </a>
+                </span>
             </span>
 
           <br>
@@ -310,12 +322,13 @@
 <p>在计算机发展史中，“进程”是为了解决什么问题而被引入的？</p>
 </blockquote>
 <p>程序：就是一个指令序列</p>
-<p>早期的计算机只支持单道程序，CPU只为这个程序服务，内存当中也只会存放这个程序相关的信息</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\before.png" alt="image-20200429101950694"></p>
+<p>早期的计算机只支持单道程序，CPU 只为这个程序服务，内存当中也只会存放这个程序相关的信息</p>
+<a id="more"></a>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\before.png" alt="image-20200429101950694"></p>
 <p>之后引入了多道程序技术</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\after.png" alt="image-20200429102318679"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\after.png" alt="image-20200429102318679"></p>
 <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><strong>程序段、数据段、PCB</strong>三部分组成了进程实体（进程映像），一般情况下，把进程实体简称为进程</p>
-<p>例如，创建进程，实质上是创建进程实体中的PCB，<strong>PCB是进程存在的唯一标志</strong></p>
+<p>例如，创建进程，实质上是创建进程实体中的 PCB，<strong>PCB 是进程存在的唯一标志</strong></p>
 <p>从不同角度进程有不同的定义（强调动态性）</p>
 <ol>
 <li>进程是程序的一次<strong>执行过程</strong></li>
@@ -325,73 +338,73 @@
 <p>引入进程实体概念，也可定义为</p>
 <p><strong>进程</strong>是进程实体的<strong>运行过程</strong>，是系统进行<strong>资源分配</strong>和<strong>调度</strong>的一个独立单位</p>
 <p>严格来说，进程和进程实体是不一样的，进程实体是<strong>静态的</strong>，进程则是<strong>动态的</strong></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\more.png" alt="image-20200429104837150"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\more.png" alt="image-20200429104837150"></p>
 <h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><blockquote>
 <p>每个进程由哪些部分组成？</p>
 </blockquote>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\sum.png" alt="image-20200429105056816"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\pcb.png" alt="image-20200429105011884"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\sum.png" alt="image-20200429105056816"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\pcb.png" alt="image-20200429105011884"></p>
 <h3 id="进程的组织方式"><a href="#进程的组织方式" class="headerlink" title="进程的组织方式"></a>进程的组织方式</h3><blockquote>
 <p>系统中各个进程之间是如何被组织起来的？</p>
 </blockquote>
-<p>在一个系统中，通常由数十、数百乃至数千个PCB，为了能对他们加以有效管理，应该用适当的方式把这些PCB组织起来</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\toge.png" alt="image-20200429105255418"></p>
+<p>在一个系统中，通常由数十、数百乃至数千个 PCB，为了能对他们加以有效管理，应该用适当的方式把这些 PCB 组织起来</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\toge.png" alt="image-20200429105255418"></p>
 <h4 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h4><p>执行指针：指向当前处于运行态（执行态）的进程</p>
 <p>就绪队列指针：指向当前处于就绪态的进程</p>
-<p>阻塞队列指针：指向当前处于阻塞态的进程，很多操作系统还会根据阻塞原因不同，再分为多个阻塞队列 </p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\front.png" alt="image-20200429105619570"></p>
+<p>阻塞队列指针：指向当前处于阻塞态的进程，很多操作系统还会根据阻塞原因不同，再分为多个阻塞队列</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\front.png" alt="image-20200429105619570"></p>
 <h4 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h4><p>指针指向的是一个索引表，而不是一个队头</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\chat.png" alt="image-20200429105727428"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\chat.png" alt="image-20200429105727428"></p>
 <h3 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h3><blockquote>
 <p>相比于程序，进程有哪些特征</p>
 </blockquote>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\figure.png" alt="image-20200429105920814"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\figure.png" alt="image-20200429105920814"></p>
 <p>sum up</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\sumup.png" alt="image-20200429110037057"></p>
-<h3 id="进程的状态和转换"><a href="#进程的状态和转换" class="headerlink" title="进程的状态和转换"></a>进程的状态和转换</h3><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\turn.png" alt="image-20200429110110188"></p>
-<h4 id="三种基本状态"><a href="#三种基本状态" class="headerlink" title="三种基本状态"></a>三种基本状态</h4><p>进程是程序的一次执行。在这个执行过程中，有时进程正在被CPU处理，有时又需要等待CPU服务，可见，进程的状态时会有各种变化的。</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\base.png" alt="image-20200429110401800"></p>
-<h4 id="另外两种状态"><a href="#另外两种状态" class="headerlink" title="另外两种状态"></a>另外两种状态</h4><p>创建态：操作系统需要完成创建进程，操作系统为该进程分配所需的内存空间等系统资源，并为其创建、初始化PCB</p>
-<p>终止态：进程运行结束（或者由于bug导致进程无法继续执行下去，比如数组越界错误），需要撤销进程，操作系统需要完成撤销进程相关的工作，完成将分配给进程的资源回收，撤销进程PCB等工作</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\two.png" alt="image-20200429114831057"></p>
-<h4 id="状态的转换"><a href="#状态的转换" class="headerlink" title="状态的转换"></a>状态的转换</h4><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\translate.png" alt="image-20200429115158490"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\sumup.png" alt="image-20200429110037057"></p>
+<h3 id="进程的状态和转换"><a href="#进程的状态和转换" class="headerlink" title="进程的状态和转换"></a>进程的状态和转换</h3><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\turn.png" alt="image-20200429110110188"></p>
+<h4 id="三种基本状态"><a href="#三种基本状态" class="headerlink" title="三种基本状态"></a>三种基本状态</h4><p>进程是程序的一次执行。在这个执行过程中，有时进程正在被 CPU 处理，有时又需要等待 CPU 服务，可见，进程的状态时会有各种变化的。</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\base.png" alt="image-20200429110401800"></p>
+<h4 id="另外两种状态"><a href="#另外两种状态" class="headerlink" title="另外两种状态"></a>另外两种状态</h4><p>创建态：操作系统需要完成创建进程，操作系统为该进程分配所需的内存空间等系统资源，并为其创建、初始化 PCB</p>
+<p>终止态：进程运行结束（或者由于 bug 导致进程无法继续执行下去，比如数组越界错误），需要撤销进程，操作系统需要完成撤销进程相关的工作，完成将分配给进程的资源回收，撤销进程 PCB 等工作</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\two.png" alt="image-20200429114831057"></p>
+<h4 id="状态的转换"><a href="#状态的转换" class="headerlink" title="状态的转换"></a>状态的转换</h4><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\translate.png" alt="image-20200429115158490"></p>
 <p>因为进阻塞态时进程主动请求的，必然需要进程在运行的时候才能发出主动请求</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\jincheng.png" alt="image-20200429115337462"></p>
-<h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\control.png" alt="image-20200429115519116"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\jincheng.png" alt="image-20200429115337462"></p>
+<h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\control.png" alt="image-20200429115519116"></p>
 <h4 id="什么是进程控制"><a href="#什么是进程控制" class="headerlink" title="什么是进程控制"></a>什么是进程控制</h4><blockquote>
 <p>进程控制的主要功能就是对系统中的所有进程实施有效的管理，它具有创建新进程，撤销已有进程、实现进程状态转换等功能</p>
 <p>即实现进程状态转换</p>
 </blockquote>
-<h4 id="如何实现进程控制"><a href="#如何实现进程控制" class="headerlink" title="如何实现进程控制"></a>如何实现进程控制</h4><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\howto.png" alt="image-20200429120016468"></p>
+<h4 id="如何实现进程控制"><a href="#如何实现进程控制" class="headerlink" title="如何实现进程控制"></a>如何实现进程控制</h4><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\howto.png" alt="image-20200429120016468"></p>
 <p>使用原语实现进程的控制，原语的特点是执行期间不允许中断，只能一气呵成。</p>
-<p>保证把PCB放到一个队列中，并且PCB中的数据也被修改</p>
+<p>保证把 PCB 放到一个队列中，并且 PCB 中的数据也被修改</p>
 <p>这种不可被中断的操作即原子操作</p>
 <p>原语采用“关中断指令”和“开中断指令”实现</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\action.png" alt="image-20200429121045765"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\action.png" alt="image-20200429121045765"></p>
 <h4 id="进程控制相关的原语"><a href="#进程控制相关的原语" class="headerlink" title="进程控制相关的原语"></a>进程控制相关的原语</h4><p>原语要完成的事情</p>
 <ol>
-<li>更新PCB中的信息（如修改进程状态标志、将运行环境保存到PCB、从PCB恢复运行环境）<ol>
+<li>更新 PCB 中的信息（如修改进程状态标志、将运行环境保存到 PCB、从 PCB 恢复运行环境）<ol>
 <li>所有的进程控制原语，一定都会修改进程状态标志</li>
-<li>剥夺当前运行进程的CPU使用权必然需要保存其运行环境</li>
+<li>剥夺当前运行进程的 CPU 使用权必然需要保存其运行环境</li>
 <li>某进程开始运行前必然要恢复其运行环境</li>
 </ol>
 </li>
-<li>将PCB插入合适的队列</li>
+<li>将 PCB 插入合适的队列</li>
 <li>分配/回收资源</li>
 </ol>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\yu1.png" alt="image-20200429133843096"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\yu2.png" alt="image-20200429133935666"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\yu3.png" alt="image-20200429134114317"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\yu4.png" alt="image-20200429134211458"></p>
-<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\msg.png" alt="image-20200429134311601"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\yu1.png" alt="image-20200429133843096"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\yu2.png" alt="image-20200429133935666"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\yu3.png" alt="image-20200429134114317"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\yu4.png" alt="image-20200429134211458"></p>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\msg.png" alt="image-20200429134311601"></p>
 <h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>进程通信是指进程之间的信息交换</p>
 <p>进程是分配系统资源的单位（包括内存地址空间），因此各进程拥有的<strong>内存地址空间相互独立</strong></p>
 <p>内存并不共享，为了保证安全，<strong>一个进程不能直接访问另一个进程的地址空间</strong></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\share.png" alt="image-20200429134600918"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\share.png" alt="image-20200429134600918"></p>
 <h4 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a>共享存储</h4><p>两个进程不能直接访问对方的地址空间，所以操作系统会给两个进程分配一个共享空间</p>
-<p>访问是互斥的，当进程1访问时，进程2不可访问</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\hts.png" alt="image-20200429134914723"></p>
-<h4 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h4><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\pipe.png" alt="image-20200429135815353"></p>
+<p>访问是互斥的，当进程 1 访问时，进程 2 不可访问</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\hts.png" alt="image-20200429134914723"></p>
+<h4 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h4><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\pipe.png" alt="image-20200429135815353"></p>
 <ol>
 <li>管道只能采用 <strong>半双工通信</strong>，某一时间段内只能实现单向的传输，如果要实现 <strong>双向同时通信</strong>，则需要设置两个管道</li>
 <li>各进程要互斥的访问管道</li>
@@ -399,30 +412,30 @@
 <li><strong>如果没有写满，不允许读，如果没有读空，不允许写</strong></li>
 <li>数据一旦被读出，就从管道中被抛弃，意味着读进程最多只能有一个，否则会读错</li>
 </ol>
-<p>即进程1向管道中写数据，写满后，进程2才可以往外读数据，只有在数据全部被读取后，进程1才可以继续往里面写数据</p>
+<p>即进程 1 向管道中写数据，写满后，进程 2 才可以往外读数据，只有在数据全部被读取后，进程 1 才可以继续往里面写数据</p>
 <h4 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h4><p>进程间的数据交换以 <strong>格式化的消息</strong>为单位，进程通过操作系统提供的“发送消息/接收消息”两个原语进行数据交换</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\msgc.png" alt="image-20200429140840586"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\msgc.png" alt="image-20200429140840586"></p>
 <p>sum up</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\summ.png" alt="image-20200429140955654"></p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\xianc.png" alt="image-20200429141059336"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\summ.png" alt="image-20200429140955654"></p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\xianc.png" alt="image-20200429141059336"></p>
 <h3 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h3><p>没有引入进程之前，系统中各个程序只能串行执行</p>
 <p>有的进程可能需要同时做很多事，而传统的进程只能串行的执行一系列程序。为此引入了“线程”，来增加并发度</p>
-<p>传统的进程是程序执行流的最小单位，引入线程机制后，CPU调度服务对象就是进程中的线程，线程就成了程序执行流的最小单位</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\many.png" alt="image-20200429141510682"></p>
-<p>可以把线程理解为轻量级进程，<strong>线程是一个基本的CPU执行单位，也是程序执行流的最小单位</strong></p>
-<p>引入线程后，不仅是进程之间可以并发，进程内的各线程之间也可以并发，从而进一步提升了系统的并发度，使得一个进程内也可以并发处理各种任务（如QQ视频、文字聊天、文件传输）</p>
-<p>引入线程后，进程只能作为除CPU之外的系统资源的分配单元（如打印机、内存地址空间等都是分配给进程的）</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\change.png" alt="image-20200429143216049"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\per.png" alt="image-20200429144057183"></p>
-<h3 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h3><p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\user.png" alt="image-20200429144322634"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\machine.png" alt="image-20200429144357540"></p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\nm.png" alt="image-20200429144435630"></p>
+<p>传统的进程是程序执行流的最小单位，引入线程机制后，CPU 调度服务对象就是进程中的线程，线程就成了程序执行流的最小单位</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\many.png" alt="image-20200429141510682"></p>
+<p>可以把线程理解为轻量级进程，<strong>线程是一个基本的 CPU 执行单位，也是程序执行流的最小单位</strong></p>
+<p>引入线程后，不仅是进程之间可以并发，进程内的各线程之间也可以并发，从而进一步提升了系统的并发度，使得一个进程内也可以并发处理各种任务（如 QQ 视频、文字聊天、文件传输）</p>
+<p>引入线程后，进程只能作为除 CPU 之外的系统资源的分配单元（如打印机、内存地址空间等都是分配给进程的）</p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\change.png" alt="image-20200429143216049"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\per.png" alt="image-20200429144057183"></p>
+<h3 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h3><p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\user.png" alt="image-20200429144322634"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\machine.png" alt="image-20200429144357540"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\nm.png" alt="image-20200429144435630"></p>
 <h3 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h3><p>多对一模型</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\much.png" alt="image-20200429144542025"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\much.png" alt="image-20200429144542025"></p>
 <p>一对一模型</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\one.png" alt="image-20200429144646359"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\one.png" alt="image-20200429144646359"></p>
 <p>多对多模型</p>
-<p><img src="/2020/04/29/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source\_posts\进程与线程\mn.png" alt="image-20200429144735509"></p>
+<p><img src="/2020/07/28/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/Blog\source_posts\进程与线程\mn.png" alt="image-20200429144735509"></p>
 
     </div>
 
@@ -431,6 +444,10 @@
     
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/study-in-school/" rel="tag"><i class="fa fa-tag"></i> study in school</a>
+          </div>
 
         
 
@@ -442,7 +459,7 @@
       <i class="fa fa-chevron-left"></i> Position详解
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/01/%E7%BA%AFCSS%E5%AE%9E%E7%8E%B0%E7%80%91%E5%B8%83%E6%B5%81%E6%95%88%E6%9E%9C/" rel="next" title="纯CSS实现瀑布流效果">
+    <a href="/2020/07/28/%E7%BA%AFCSS%E5%AE%9E%E7%8E%B0%E7%80%91%E5%B8%83%E6%B5%81%E6%95%88%E6%9E%9C/" rel="next" title="纯CSS实现瀑布流效果">
       纯CSS实现瀑布流效果 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
